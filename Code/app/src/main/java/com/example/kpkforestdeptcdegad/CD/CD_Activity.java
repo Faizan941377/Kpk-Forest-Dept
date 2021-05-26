@@ -10,7 +10,16 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.kpkforestdeptcdegad.CD.Enclosure.EnclosureActivity;
+import com.example.kpkforestdeptcdegad.CD.Enclosure.View_Enclosure_DataActivity;
+import com.example.kpkforestdeptcdegad.CD.FormForestry.FormForestryActivity;
+import com.example.kpkforestdeptcdegad.CD.FormForestry.View_FormForestry_DataActivity;
+import com.example.kpkforestdeptcdegad.CD.JFMC.JFMCActivity;
+import com.example.kpkforestdeptcdegad.CD.JFMC.JFMC_View_DataActivity;
 import com.example.kpkforestdeptcdegad.CD.VDC.VDC_Activity;
+import com.example.kpkforestdeptcdegad.CD.VDC.View_VDC_DataActivity;
+import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity;
+import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.WaterHarvestingSchemesActivity;
 import com.example.kpkforestdeptcdegad.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -89,6 +98,8 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_VDC_DataActivity.class);
+                startActivity(intent);
                 Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }
@@ -119,6 +130,8 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_FormForestry_DataActivity.class);
+                startActivity(intent);
                 Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }
@@ -149,6 +162,8 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JFMC_View_DataActivity.class);
+                startActivity(intent);
                 Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }
@@ -179,6 +194,8 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_Enclosure_DataActivity.class);
+                startActivity(intent);
                 Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }
@@ -209,6 +226,8 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_WaterHarvestingScheme_DataActivity.class);
+                startActivity(intent);
                 Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }

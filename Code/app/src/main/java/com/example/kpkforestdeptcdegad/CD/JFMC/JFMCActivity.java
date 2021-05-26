@@ -1,4 +1,4 @@
-package com.example.kpkforestdeptcdegad.CD;
+package com.example.kpkforestdeptcdegad.CD.JFMC;
 
 import androidx.appcompat.app.AppCompatActivity;
 

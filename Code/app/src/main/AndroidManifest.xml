@@ -2,16 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kpkforestdeptcdegad">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD">
-        <activity android:name=".CD.VDC.View_VDC_DataActivity"></activity>
+        <activity android:name=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        </activity>
         <activity
-            android:name=".CD.WaterHarvestingSchemesActivity"
+            android:name=".CD.Enclosure.View_Enclosure_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CD.JFMC.JFMC_View_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CD.FormForestry.View_FormForestry_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CD.VDC.View_VDC_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CD.WaterHarvestingScheme.WaterHarvestingSchemesActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.VDC.VDC_Activity"
@@ -29,10 +46,10 @@
             android:name=".GAD.GADActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".CD.JFMCActivity"
+            android:name=".CD.JFMC.JFMCActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".CD.FormForestryActivity"
+            android:name=".CD.FormForestry.FormForestryActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".HR.HRActivity"
@@ -41,7 +58,7 @@
             android:name=".Extension.MassPlantingEventActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".CD.EnclosureActivity"
+            android:name=".CD.Enclosure.EnclosureActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.CD_Activity"

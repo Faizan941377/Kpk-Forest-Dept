@@ -64,18 +64,26 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="VDC"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp"
+                        android:layout_centerInParent="true"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -96,17 +104,26 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="FORM FORESTRY"
+                        android:layout_centerInParent="true"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
 
 
                 </RelativeLayout>
@@ -128,17 +145,26 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="JFMC"
+                        android:layout_centerInParent="true"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
 
                 </RelativeLayout>
 
@@ -160,18 +186,27 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Enclosure"
                         android:textAllCaps="true"
+                        android:layout_centerInParent="true"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
 
                 </RelativeLayout>
 
@@ -193,19 +228,28 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Water Harvesting Schemes"
+                        android:text="@string/water_harvesting_schemes"
                         android:textColor="@color/colorWhite"
-                        android:textSize="21dp"
+                        android:textSize="18dp"
                         android:gravity="center"
+                        android:layout_centerInParent="true"
                         android:textAllCaps="true"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
 
                 </RelativeLayout>
 

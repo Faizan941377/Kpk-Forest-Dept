@@ -4,5 +4,8 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="water_harvesting_schemes">Water Harvesting <br></br>Schemes</string>
+    <string name="Celebration_Environmental_Planting">Celebration <br></br>Environmental<br></br>Planing</string>
+    <string name="Extension_Material_Prepared">Extension Material <br></br>Prepared</string>
 
 </resources>

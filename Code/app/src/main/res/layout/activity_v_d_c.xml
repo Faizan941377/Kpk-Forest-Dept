@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CD.JFMCActivity">
+    tools:context=".CD.JFMC.JFMCActivity">
 
     <RelativeLayout
         android:id="@+id/action_bar"
@@ -54,6 +54,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_forestDivision"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Forest Division"
@@ -71,6 +72,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_subDivision"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Sub Division | Range"
@@ -87,6 +89,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_village"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of village"
@@ -103,6 +106,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_vdcJfmc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of VDC | JFMC"
@@ -120,6 +124,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_date_establishment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Date of Establishment | Registration"
@@ -136,6 +141,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_president"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of President"
@@ -152,6 +158,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_contact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Contact Number"
@@ -175,12 +182,14 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rb_vdc_functional"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Functional" />
 
                 <RadioButton
+                    android:id="@+id/rb_vdc_nonFunctional"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -189,6 +198,7 @@
             </RadioGroup>
 
             <LinearLayout
+                android:id="@+id/bt_vdc_submit"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_gravity="center"

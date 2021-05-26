@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.kpkforestdeptcdegad.Dashboard.DashboardActivity;
 import com.example.kpkforestdeptcdegad.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -27,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         passwordET = findViewById(R.id.et_password);
         loginBT = findViewById(R.id.bt_login);
         signUpBT = findViewById(R.id.bt_signUp);
-
+        signUpBT.setOnClickListener(this);
         loginBT.setOnClickListener(this);
     }
 
@@ -35,8 +36,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_login:
-                Intent intent = new Intent(this,RegistrationActivity.class);
+                Intent intent = new Intent(this, DashboardActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.bt_signUp:
+                Intent intent1 = new Intent(this,RegistrationActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
