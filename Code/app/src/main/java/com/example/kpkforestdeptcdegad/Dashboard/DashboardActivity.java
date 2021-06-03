@@ -47,7 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2b9f4c")));
-       // getSupportActionBar().setTitle("Dashboard");
+
         setDrawerContent(navigationView);
     }
 
