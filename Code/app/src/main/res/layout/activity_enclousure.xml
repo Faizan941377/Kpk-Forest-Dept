@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abstract of Progress"
+            android:text="Progress of Enclosure"
             android:textColor="@color/colorWhite"
             android:layout_centerInParent="true"
             android:textSize="20dp"
@@ -62,7 +62,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Forrest Division" />
+                        android:hint="Forest Division" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

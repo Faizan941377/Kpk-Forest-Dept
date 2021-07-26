@@ -1,6 +1,7 @@
 package com.example.kpkforestdeptcdegad.Network;
 
 
+import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
 import com.example.kpkforestdeptcdegad.Response.VDC;
 
 import retrofit2.Call;
@@ -21,9 +22,8 @@ public interface Webservices {
             @Field("date_of_establishment_registration") String date_of_establishment_registration,
             @Field("name_of_president") String name_of_president,
             @Field("contact") String contact,
-            @Field("present_status") String present_status);
-
-
-   /* @GET("fetchusers.php")
-    Call<FetchPostResponse> fetchPost();*/
+            @Field("jfmc_wo") String jfmc_wo,
+            @Field("total_member") String total_member,
+            @Field("image") String image
+    );
 }

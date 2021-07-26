@@ -3,6 +3,8 @@
     package="com.example.kpkforestdeptcdegad">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,11 +12,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.KPKForestDeptCDEGAD">
-        <activity android:name=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        </activity>
+        android:theme="@style/Theme.KPKForestDeptCDEGAD"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".GAD.OtherActivityMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+        <activity android:name=".GAD.FarmAgroForestryMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name=".GAD.GADMassPlantingEventMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name=".GAD.YouthWemonNurseryActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name=".GAD.WemonOrganizationActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity
+            android:name=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.Enclosure.View_Enclosure_DataActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -74,7 +86,7 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".user.LoginActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

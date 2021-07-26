@@ -58,7 +58,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Location of event &amp; Name of institute"
+                    android:hint="Location / Venue"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -67,17 +67,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:hint="Chief Guest"
-                    android:inputType="text" />
+                    android:hint="Chief Guest's"
+                    android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,21 +106,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Species"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:hint="No of plants planted"
                     android:inputType="number" />
 
@@ -136,8 +121,25 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="No of plants hand over"
+                    android:hint="No of Plants Distributed"
                     android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Spring | Monsoon"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -7,29 +7,30 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/dl_dashboard_drawer"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="320dp">
 
-        <FrameLayout
-            android:id="@+id/frame_Layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationDrawer"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_showImage"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@color/colorWhite"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/dashboard_nav_header"
-            app:itemIconTint="@color/colorGreen"
-            app:itemTextColor="@color/colorBlack"
-            app:menu="@menu/drawer_menu" />
+            android:backgroundTint="@color/colorGreen"
+            android:background="@drawable/ico_image_placeholder"
+            android:scaleType="fitXY" />
 
-
-    </androidx.drawerlayout.widget.DrawerLayout>
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_openGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:backgroundTint="@color/colorGreen"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ico_camera"
+            app:tint="@color/colorWhite"/>
+    </RelativeLayout>
 </LinearLayout>

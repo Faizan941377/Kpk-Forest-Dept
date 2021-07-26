@@ -3,7 +3,7 @@ package com.example.kpkforestdeptcdegad.Response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class VDC {
+public class RegistrationResponse {
 
     @SerializedName("error")
     @Expose
@@ -27,4 +27,5 @@ public class VDC {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

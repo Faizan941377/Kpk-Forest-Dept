@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CD.FormForestry.FormForestryActivity">
-
+    tools:context=".GAD.YouthWemonNurseryActivity">
 
     <RelativeLayout
         android:id="@+id/action_bar"
@@ -17,26 +16,24 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ico_back"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ico_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:text="Form Forestry"
-            android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
+            android:text="Youth Women Nursery"
+            android:textColor="@color/colorWhite"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="21dp"
         android:layout_marginRight="20dp"
@@ -52,24 +49,22 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Form | Agro | Forestry"
-                android:inputType="text"/>
+                android:hint="Name of Division"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Name of Forest Division | Range"
+                android:hint="Name of Sub-Division | Range"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,14 +74,13 @@
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Total No of Plants Distributed So For"
+                android:hint="VDC | WO"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -95,15 +89,13 @@
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Name of Sub-Division Range"
+                android:hint="Name of Nursery Owner"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,15 +104,13 @@
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Plants Distributed Today"
+                android:hint="Location | Village Name"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -129,15 +119,13 @@
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Total Number of Plants Distributed Till Date"
+                android:hint="Limit"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -147,6 +135,7 @@
             android:layout_height="46dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/green_ripple_effect"
             android:gravity="center">
 

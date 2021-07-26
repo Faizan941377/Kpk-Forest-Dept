@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Extension.CelebrationOfEnvironmentalPlantingActivity">
-
+    tools:context=".GAD.OtherActivityMainActivity">
 
     <RelativeLayout
+        android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorGreen">
@@ -16,18 +16,19 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ico_back"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp" />
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ico_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Select Celebration of Environmental"
+            android:text="Other Activity"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
             android:textStyle="bold" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -54,86 +55,26 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Location of event &amp; Name of institute"
+                    android:hint="Activity Title"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:hint="Chief Guest"
-                    android:inputType="textMultiLine" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Environmental | Planting  Type"
-                    android:inputType="number" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Environmental  Day | Planting Event "
-                    android:inputType="number" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Date of Event"
-                    android:inputType="date" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="No of plants planted"
-                    android:inputType="number" />
+                    android:hint="Description"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,8 +98,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
     </ScrollView>
-
-
 </LinearLayout>

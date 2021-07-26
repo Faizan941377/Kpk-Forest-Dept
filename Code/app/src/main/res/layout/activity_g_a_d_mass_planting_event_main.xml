@@ -1,131 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.RegistrationActivity">
+    android:orientation="vertical"
+    tools:context=".GAD.GADMassPlantingEventMainActivity">
 
     <RelativeLayout
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorGreen">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ico_back"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="8dp" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ico_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Mass Planting Event"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="CDEGAD"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp" />
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/action_bar">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/action_bar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="21dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome, please Register to your CDEGAD account!"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textSize="20dp" />
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Name of Division"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_firstName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="First Name" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Last Name" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ico_drop_down"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:backgroundTint="@color/colorBlack"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_centerInParent="true" />
-
-                <Spinner
-                    android:id="@+id/sp_gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/spinner_background"
-                    android:spinnerMode="dropdown"
-                    android:paddingLeft="15dp" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_cnic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="CNIC"
-                    android:inputType="textPhonetic" />
+                    android:gravity="start"
+                    android:hint="Chief Gust's"
+                    android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,16 +80,14 @@
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Mobile"
-                    android:inputType="phone" />
+                    android:hint="Name of Event"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,15 +95,80 @@
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_division"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Division" />
+                    android:hint="Date of Event"
+                    android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Location"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Name of Institute"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Number of Plants Planted"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_vdc_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Number of Plants Distributed"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,55 +177,40 @@
                 style="@style/EditTextOutline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 app:boxStrokeColor="@color/colorBlack"
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_email"
+                    android:id="@+id/et_vdc_contact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:hint="Number of Plants Utilized"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
-                android:id="@+id/bt_registeration_register"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="36dp"
                 android:background="@drawable/green_ripple_effect"
-                android:clickable="true"
                 android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Register"
+                    android:text="Submit"
                     android:textColor="@color/colorWhite"
                     android:textSize="18dp" />
 
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
-</RelativeLayout>
+
+</LinearLayout>

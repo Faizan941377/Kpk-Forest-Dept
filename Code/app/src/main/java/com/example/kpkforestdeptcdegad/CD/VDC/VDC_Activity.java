@@ -1,10 +1,17 @@
 package com.example.kpkforestdeptcdegad.CD.VDC;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -12,6 +19,10 @@ import android.widget.Toast;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.VDC;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +30,10 @@ import retrofit2.Response;
 
 public class VDC_Activity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int GALLERY_REQUEST = 100;
+    ImageView showImage;
+    FloatingActionButton openGalleryBT;
+    Bitmap bitmap;
     EditText forestDivisionET;
     EditText subDivisionET;
     EditText nameOfVillageET;
@@ -26,8 +41,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
     EditText dateOfEstablishmentET;
     EditText nameOfPresidentET;
     EditText contactEt;
-    RadioButton functionalRB;
-    RadioButton nonFunctionalRB;
+    EditText JFMCWOET;
+    EditText totalMemberET;
     LinearLayout submitBT;
 
     @Override
@@ -35,6 +50,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_v_d_c);
 
+        showImage = findViewById(R.id.iv_showImage);
+        openGalleryBT = findViewById(R.id.bt_openGallery);
         forestDivisionET = findViewById(R.id.et_vdc_forestDivision);
         subDivisionET = findViewById(R.id.et_vdc_subDivision);
         nameOfVillageET = findViewById(R.id.et_vdc_village);
@@ -42,12 +59,13 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         dateOfEstablishmentET = findViewById(R.id.et_vdc_date_establishment);
         nameOfPresidentET = findViewById(R.id.et_vdc_president);
         contactEt = findViewById(R.id.et_vdc_contact);
-        functionalRB = findViewById(R.id.rb_vdc_functional);
-        nonFunctionalRB = findViewById(R.id.rb_vdc_nonFunctional);
         submitBT = findViewById(R.id.bt_vdc_submit);
+        JFMCWOET = findViewById(R.id.et_vdc_JFMCWO);
+        totalMemberET = findViewById(R.id.et_vdc_totalMember);
 
 
         submitBT.setOnClickListener(this);
+        openGalleryBT.setOnClickListener(this);
 
     }
 
@@ -56,6 +74,42 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.bt_vdc_submit:
                 submitVDC();
+                break;
+
+            case R.id.bt_openGallery:
+                getImageFromGallery();
+                break;
+        }
+    }
+
+    //send image to database
+    private String imageToString() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] imageByte = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imageByte, Base64.DEFAULT);
+    }
+
+    private void getImageFromGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+                showImage.setImageBitmap(bitmap);
+                showImage.setVisibility(View.VISIBLE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -68,31 +122,55 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         String dateOfEstablishment = dateOfEstablishmentET.getText().toString();
         String nameOfPresident = nameOfPresidentET.getText().toString();
         String contact = contactEt.getText().toString();
-        String functional = functionalRB.getText().toString();
-        String nonFunctional = nonFunctionalRB.getText().toString();
+        String jfmcWO = JFMCWOET.getText().toString();
+        String totalMember = totalMemberET.getText().toString();
+        String image = imageToString();
 
-        Call<VDC> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision,subDivision,nameOfVillage,vdcJfmc
-                ,dateOfEstablishment,nameOfPresident,contact,functional);
-        call.enqueue(new Callback<VDC>() {
-            @Override
-            public void onResponse(Call<VDC> call, Response<VDC> response) {
-                VDC vdc = response.body();
-                if (response.isSuccessful()){
-                    if (vdc.getError().equals("200")){
+        if (forestDivisionET.length()==0){
+            forestDivisionET.setError("Enter Forest Division Name");
+        }else if (subDivisionET.length()==0){
+            subDivisionET.setError("Enter Sub Division Name");
+        }else if (nameOfVillageET.length()==0){
+            nameOfVillageET.setError("Enter Village Name");
+        }else if (vdcJfmcET.length()==0){
+            vdcJfmcET.setError("Enter Name of VDC | JFMC");
+        }else if (dateOfEstablishmentET.length()==0){
+            dateOfEstablishmentET.setError("Enter Date of Establishment");
+        }else if (nameOfPresidentET.length()==0){
+            nameOfPresidentET.setError("Enter Name of President");
+        }else if (contactEt.length()==0){
+            contactEt.setError("Enter Contact Number");
+        }else if (JFMCWOET.length()==0){
+            JFMCWOET.setError("Enter JFMCWO");
+        }else if (totalMemberET.length()==0) {
+            totalMemberET.setError("Enter Total Number of Members");
+        }else{
 
-                        Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "method Call", Toast.LENGTH_SHORT).show();
 
-                    }else if (vdc.getError().equals("400")){
+            Call<VDC> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision, subDivision, nameOfVillage, vdcJfmc
+                    , dateOfEstablishment, nameOfPresident, contact, jfmcWO, totalMember,image);
+            call.enqueue(new Callback<VDC>() {
+                @Override
+                public void onResponse(Call<VDC> call, Response<VDC> response) {
+                    VDC vdc = response.body();
+                    if (response.isSuccessful()) {
+                        if (vdc.getError().equals("200")) {
 
-                        Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        } else if (vdc.getError().equals("400")) {
+
+                            Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<VDC> call, Throwable t) {
-                Toast.makeText(VDC_Activity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<VDC> call, Throwable t) {
+                    Toast.makeText(VDC_Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

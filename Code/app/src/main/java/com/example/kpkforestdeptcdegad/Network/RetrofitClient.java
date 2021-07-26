@@ -30,7 +30,7 @@ public class RetrofitClient {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(builder.build())
                 .build();
 

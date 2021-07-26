@@ -90,47 +90,6 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/bt_cd_formForestry"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
-                app:cardBackgroundColor="@color/colorGreen"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FORM FORESTRY"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ico_forward"
-                        android:layout_centerInParent="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:backgroundTint="@color/colorWhite"/>
-
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/bt_cd_gfmc"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -210,6 +169,47 @@
 
                 </RelativeLayout>
 
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/bt_cd_formForestry"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="@color/colorGreen"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FORM FORESTRY"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ico_forward"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/colorWhite"/>
+
+
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
 
