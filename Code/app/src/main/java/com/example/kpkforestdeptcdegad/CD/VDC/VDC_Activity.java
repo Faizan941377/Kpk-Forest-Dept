@@ -13,12 +13,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
-import com.example.kpkforestdeptcdegad.Response.VDC;
+import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
@@ -146,28 +145,28 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
             totalMemberET.setError("Enter Total Number of Members");
         }else{
 
-            Toast.makeText(this, "method Call", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "method Call", Toast.LENGTH_SHORT).show();
 
-            Call<VDC> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision, subDivision, nameOfVillage, vdcJfmc
+            Call<VDCResponse> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision, subDivision, nameOfVillage, vdcJfmc
                     , dateOfEstablishment, nameOfPresident, contact, jfmcWO, totalMember,image);
-            call.enqueue(new Callback<VDC>() {
+            call.enqueue(new Callback<VDCResponse>() {
                 @Override
-                public void onResponse(Call<VDC> call, Response<VDC> response) {
-                    VDC vdc = response.body();
+                public void onResponse(Call<VDCResponse> call, Response<VDCResponse> response) {
+                    VDCResponse vdcResponse = response.body();
                     if (response.isSuccessful()) {
-                        if (vdc.getError().equals("200")) {
+                        if (vdcResponse.getError().equals("200")) {
 
-                            Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VDC_Activity.this, vdcResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        } else if (vdc.getError().equals("400")) {
+                        } else if (vdcResponse.getError().equals("400")) {
 
-                            Toast.makeText(VDC_Activity.this, vdc.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VDC_Activity.this, vdcResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<VDC> call, Throwable t) {
+                public void onFailure(Call<VDCResponse> call, Throwable t) {
                     Toast.makeText(VDC_Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

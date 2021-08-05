@@ -16,14 +16,19 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kpkforestdeptcdegad.Model.FetchJFMCDataModel;
 import com.example.kpkforestdeptcdegad.R;
+
+import java.util.List;
 
 public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
 
     Context mContext;
+    List<FetchJFMCDataModel> fetchJFMCDataModelList;
 
-    public JFMC_Adapter(Context mContext) {
+    public JFMC_Adapter(Context mContext, List<FetchJFMCDataModel> fetchJFMCDataModelList) {
         this.mContext = mContext;
+        this.fetchJFMCDataModelList = fetchJFMCDataModelList;
     }
 
     @NonNull
@@ -35,20 +40,39 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
 
     @Override
     public void onBindViewHolder(@NonNull JFMC_Adapter.JFMCVH holder, int position) {
-
+        holder.forestDivisionTV.setText(fetchJFMCDataModelList.get(position).getName_of_forest_division());
+        holder.subDivisionRangeTV.setText(fetchJFMCDataModelList.get(position).getName_of_sub_division_range());
+        holder.nameOfVillageTV.setText(fetchJFMCDataModelList.get(position).getName_of_village_vdc());
+        holder.nameOfVDCJFMCTV.setText(fetchJFMCDataModelList.get(position).getName_of_jfmc());
+        holder.dateOfEstablishmentRegistrationTV.setText(fetchJFMCDataModelList.get(position).getDate_of_establishment_registration());
+        holder.nameOfPresidentTV.setText(fetchJFMCDataModelList.get(position).getName_of_president());
+        holder.contactTV.setText(fetchJFMCDataModelList.get(position).getContact());
+        holder.timeDateTV.setText(fetchJFMCDataModelList.get(position).getTime_date());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        try {
+            return fetchJFMCDataModelList.size();
+        }catch (Exception e){
+            Toast.makeText(mContext, "Data Not Found", Toast.LENGTH_SHORT).show();
+        }
+        return 0;
     }
 
     public class JFMCVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView showMoreTV;
+        TextView forestDivisionTV;
+        TextView subDivisionRangeTV;
+        TextView nameOfVillageTV;
+        TextView nameOfVDCJFMCTV;
+        TextView dateOfEstablishmentRegistrationTV;
+        TextView nameOfPresidentTV;
+        TextView contactTV;
+        TextView timeDateTV;
         CardView expendingCardView;
         LinearLayout expendableLinearLayout2;
-        LinearLayout editBT;
 
         public JFMCVH(@NonNull View itemView) {
             super(itemView);
@@ -56,11 +80,17 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
             expendingCardView = itemView.findViewById(R.id.cardView_row_vdc);
             expendableLinearLayout2 = itemView.findViewById(R.id.LL2_expendableTextView);
-            editBT = itemView.findViewById(R.id.bt_edit_row_vdc);
+            forestDivisionTV = itemView.findViewById(R.id.tv_ViewJFMC_forestDivision);
+            subDivisionRangeTV = itemView.findViewById(R.id.tv_viewJFMC_subDivisionRange);
+            nameOfVillageTV = itemView.findViewById(R.id.tv_viewJFMC_nameOfVillage);
+            nameOfVDCJFMCTV = itemView.findViewById(R.id.tv_viewJFMC_nameOfJFMC);
+            dateOfEstablishmentRegistrationTV = itemView.findViewById(R.id.tv_viewJFMC_dateOfEstablishmentRegistration);
+            nameOfPresidentTV = itemView.findViewById(R.id.tv_viewJFMC_nameOfPresident);
+            contactTV = itemView.findViewById(R.id.tv_viewJFMC_contact);
+            timeDateTV = itemView.findViewById(R.id.tv_viewJFMC_timeDate);
 
 
             showMoreTV.setOnClickListener(this);
-            editBT.setOnClickListener(this);
         }
 
         public void ShowMore(View view){
@@ -84,10 +114,6 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
             switch (v.getId()){
                 case R.id.tv_rowViewVDC_showMore:
                     ShowMore(v);
-                    break;
-
-                case R.id.bt_edit_row_vdc:
-                    Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

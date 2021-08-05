@@ -14,16 +14,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GAD.OtherActivityMainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
-        <activity android:name=".GAD.FarmAgroForestryMainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
-        <activity android:name=".GAD.GADMassPlantingEventMainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
-        <activity android:name=".GAD.YouthWemonNurseryActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
-        <activity android:name=".GAD.WemonOrganizationActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <receiver
+            android:name=".BroadCast.NetworkChangeReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity
+            android:name=".GAD.OtherActivityMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.FarmAgroForestryMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.GADMassPlantingEventMainActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.YouthWemonNurseryActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.WemonOrganizationActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

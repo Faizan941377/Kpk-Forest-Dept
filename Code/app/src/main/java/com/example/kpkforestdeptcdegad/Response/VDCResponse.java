@@ -3,7 +3,7 @@ package com.example.kpkforestdeptcdegad.Response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class VDC {
+public class VDCResponse {
 
     @SerializedName("error")
     @Expose

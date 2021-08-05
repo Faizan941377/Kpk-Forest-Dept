@@ -15,52 +15,6 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/tv_da"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Date :"
-                android:textColor="@color/colorWhite"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@+id/tv_da"
-                android:text="12/12/21"
-                android:textColor="@color/colorWhite"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/bt_edit_row_vdc"
-                android:layout_width="50dp"
-                android:layout_height="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/edit_btn_shape">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:textSize="12dp"
-                    android:textColor="@color/color_basic_red"/>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
         <LinearLayout
             android:id="@+id/LL_main"
             android:layout_width="match_parent"
@@ -118,6 +72,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_ViewJFMC_forestDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -134,6 +89,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_viewJFMC_subDivisionRange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -144,6 +100,8 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <!--Card View Extended-->
 
             <LinearLayout
                 android:id="@+id/LL2_expendableTextView"
@@ -181,7 +139,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="VDC |JFMC"
+                            android:text="JFMC"
                             android:textColor="@color/colorBlack"
                             android:textSize="16dp"
                             android:textStyle="bold" />
@@ -201,6 +159,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_viewJFMC_nameOfVillage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -217,6 +176,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_viewJFMC_nameOfJFMC"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TextView"
@@ -277,6 +237,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_viewJFMC_dateOfEstablishmentRegistration"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -293,6 +254,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_viewJFMC_nameOfPresident"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TextView"
@@ -326,21 +288,6 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Present Status"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -354,28 +301,13 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_viewJFMC_contact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:text="TextView"
                             android:textColor="@color/colorBlack"
                             android:textSize="16dp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp" />
-
 
                     </LinearLayout>
 
@@ -394,6 +326,7 @@
                 android:textColor="@color/colorWhite" />
 
             <TextView
+                android:id="@+id/tv_viewJFMC_timeDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00pm"

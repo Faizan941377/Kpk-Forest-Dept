@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".CD.VDC.View_VDC_DataActivity">
 
+
     <RelativeLayout
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
+                android:id="@+id/et_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Search"
@@ -58,10 +59,18 @@
 
     </RelativeLayout>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_view_vdc"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

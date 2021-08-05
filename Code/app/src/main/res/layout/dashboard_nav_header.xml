@@ -10,11 +10,11 @@
         android:background="@color/colorGreen">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/cv_dashboard_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:id="@+id/iv_dashboard_profile"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_launcher_background"
             android:layout_marginBottom="36dp"
             android:layout_marginLeft="8dp"/>
 
@@ -22,33 +22,36 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/cv_dashboard_profile"
+            android:layout_toRightOf="@+id/iv_dashboard_profile"
             android:layout_marginLeft="16dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="36dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Faizan Ul Hassan"
+                android:text="TextView"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tv_profile_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="03000941377"
+                android:text="TextView"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="16dp"/>
 
             <TextView
+                android:id="@+id/tv_profile_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Faizan941377@gmail.com"
+                android:text="TextView"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="12dp"/>

@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
+    public   static String IMAGE_BASE_URL="http://192.168.43.174:82/forestApi/images/";
     private static String BASE_URL="http://192.168.43.174:82/forestApi/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;

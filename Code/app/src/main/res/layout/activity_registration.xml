@@ -52,6 +52,34 @@
                 android:textStyle="bold"
                 android:textSize="20dp" />
 
+            <RelativeLayout
+                android:id="@+id/addImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_showImage"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/ico_image_placeholder"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/colorGreen"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/bt_openGallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/colorGreen"
+                    android:src="@drawable/ico_camera"
+                    app:tint="@color/colorWhite" />
+            </RelativeLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EditTextOutline"
@@ -66,23 +94,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="First Name" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/EditTextOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:boxStrokeColor="@color/colorBlack"
-                app:hintTextColor="@color/colorBlack">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Last Name" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,6 +137,22 @@
                     android:layout_height="match_parent"
                     android:hint="CNIC"
                     android:inputType="textPhonetic" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_register_employeeNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

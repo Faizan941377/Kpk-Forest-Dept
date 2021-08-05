@@ -6,31 +6,5 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="320dp">
-
-        <ImageView
-            android:id="@+id/iv_showImage"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/colorGreen"
-            android:background="@drawable/ico_image_placeholder"
-            android:scaleType="fitXY" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/bt_openGallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:backgroundTint="@color/colorGreen"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ico_camera"
-            app:tint="@color/colorWhite"/>
-    </RelativeLayout>
+    
 </LinearLayout>
