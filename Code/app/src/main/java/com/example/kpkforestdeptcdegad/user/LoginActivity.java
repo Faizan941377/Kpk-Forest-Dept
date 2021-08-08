@@ -3,7 +3,11 @@ package com.example.kpkforestdeptcdegad.user;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kpkforestdeptcdegad.BroadCast.NetworkChangeReceiver;
 import com.example.kpkforestdeptcdegad.Dashboard.DashboardActivity;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
@@ -28,8 +33,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextInputEditText passwordET;
     LinearLayout loginBT;
     TextView signUpBT;
-
     ProgressDialog progressDialog;
+
+    BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +48,39 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUpBT = findViewById(R.id.bt_signUp);
 
         progressDialog = new ProgressDialog(this);
+        broadcastReceiver = new NetworkChangeReceiver();
 
 
         signUpBT.setOnClickListener(this);
         loginBT.setOnClickListener(this);
+
+        registeredNetworkBroadCastReceiver();
+    }
+
+    protected void registeredNetworkBroadCastReceiver() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }*/
+    }
+
+    protected void unRegisteredNetwork() {
+        try {
+
+            unregisterReceiver(broadcastReceiver);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unRegisteredNetwork();
     }
 
     @Override

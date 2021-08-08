@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,11 +31,14 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
     List<FetchJFMCDataModel> fetchJFMCDataModelList;
     SwipeRefreshLayout swipeRefreshLayout;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_j_f_m_c_view_data);
 
+        progressDialog = new ProgressDialog(this);
 
         jfmcViewRV = findViewById(R.id.rv_view_jfmc);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
@@ -54,11 +58,16 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
         jfmcViewRV.setHasFixedSize(true);
         jfmcViewRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.show();
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
         Call<FetchJFMCDataResponse> call = RetrofitClient.getInstance().getApi().fetchJFMCDataResponse();
         call.enqueue(new Callback<FetchJFMCDataResponse>() {
             @Override
             public void onResponse(Call<FetchJFMCDataResponse> call, Response<FetchJFMCDataResponse> response) {
                 if (response.isSuccessful()){
+                    progressDialog.dismiss();
                     fetchJFMCDataModelList = response.body().getFetchJFMCDataModelList();
                     jfmcViewRV.setAdapter(new JFMC_Adapter(getApplicationContext(), (ArrayList<FetchJFMCDataModel>) fetchJFMCDataModelList));
                 }

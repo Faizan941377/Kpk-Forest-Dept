@@ -157,7 +157,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         String firstName = firstNameET.getText().toString();
         String gender = genderSP.getSelectedItem().toString();
         String cnic = cnicET.getText().toString();
-        String emp = emailET.getText().toString();
+        String emp = employeeNoET.getText().toString();
         String mobile = mobileET.getText().toString();
         String division = divisionET.getText().toString();
         String email = emailET.getText().toString();

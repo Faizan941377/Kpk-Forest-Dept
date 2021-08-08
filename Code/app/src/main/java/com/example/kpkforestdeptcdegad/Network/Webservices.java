@@ -2,6 +2,7 @@ package com.example.kpkforestdeptcdegad.Network;
 
 
 import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
+import com.example.kpkforestdeptcdegad.Response.EnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
@@ -68,5 +69,20 @@ public interface Webservices {
             @Field("email") String email,
             @Field("password") String password,
             @Field("image") String image
+    );
+
+    @FormUrlEncoded
+    @POST("enclosure.php")
+    Call<EnclosureResponse> enclosure(
+            @Field("employee_No") String employee_No,
+            @Field("forest_division") String forest_division,
+            @Field("entry_date") String entry_date,
+            @Field("target_as_pc_1_enclosure") String target_as_pc_1_enclosure,
+            @Field("site_for_enclosure_achieved") String site_for_enclosure_achieved,
+            @Field("vdc_established")  String vdc_established,
+            @Field("nigehbans_hired") String nigehbans_hired,
+            @Field("payment_upto") String payment_upto,
+            @Field("balance_target") String balance_target,
+            @Field("remarks") String remarks
     );
 }

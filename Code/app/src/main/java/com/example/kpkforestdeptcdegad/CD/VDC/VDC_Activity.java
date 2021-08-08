@@ -3,6 +3,7 @@ package com.example.kpkforestdeptcdegad.CD.VDC;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -44,6 +45,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
     EditText totalMemberET;
     LinearLayout submitBT;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,7 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         JFMCWOET = findViewById(R.id.et_vdc_JFMCWO);
         totalMemberET = findViewById(R.id.et_vdc_totalMember);
 
+        progressDialog = new ProgressDialog(this);
 
         submitBT.setOnClickListener(this);
         openGalleryBT.setOnClickListener(this);
@@ -147,6 +151,11 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
 
            // Toast.makeText(this, "method Call", Toast.LENGTH_SHORT).show();
 
+            progressDialog.show();
+            progressDialog.setMessage("Please wait it will take few moments");
+            progressDialog.setCancelable(false);
+            progressDialog.setIndeterminate(true);
+
             Call<VDCResponse> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision, subDivision, nameOfVillage, vdcJfmc
                     , dateOfEstablishment, nameOfPresident, contact, jfmcWO, totalMember,image);
             call.enqueue(new Callback<VDCResponse>() {
@@ -154,8 +163,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
                 public void onResponse(Call<VDCResponse> call, Response<VDCResponse> response) {
                     VDCResponse vdcResponse = response.body();
                     if (response.isSuccessful()) {
+                        progressDialog.dismiss();
                         if (vdcResponse.getError().equals("200")) {
-
                             Toast.makeText(VDC_Activity.this, vdcResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else if (vdcResponse.getError().equals("400")) {

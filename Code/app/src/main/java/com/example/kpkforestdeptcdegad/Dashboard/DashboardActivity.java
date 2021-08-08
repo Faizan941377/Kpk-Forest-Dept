@@ -32,8 +32,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DashboardActivity extends AppCompatActivity{
 
-
-    public static String IMAGE_BASE_URL = "http://192.168.43.174:82/forestApi/images/";
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;

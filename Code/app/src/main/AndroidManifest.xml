@@ -3,6 +3,7 @@
     package="com.example.kpkforestdeptcdegad">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -14,10 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <receiver
-            android:name=".BroadCast.NetworkChangeReceiver"
-            android:enabled="true"
-            android:exported="true"></receiver>
+        <activity android:name=".user.Profile.UpdateProfileActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+
+        <receiver android:name=".BroadCast.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".GAD.OtherActivityMainActivity"

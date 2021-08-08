@@ -59,6 +59,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_waterHarvestingScheme"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Water Harvesting Schemes"
@@ -74,6 +75,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_NameOfForestDivision"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of Forest Division"
@@ -89,6 +91,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_waterSourceDevelopmentScheme"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Water Source Development Schemes"
@@ -104,6 +107,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_TargetAsPC1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Target As per PC-1"
@@ -119,6 +123,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_AchievedSoFarNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Achieved So For No"
@@ -134,6 +139,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_vdcEstablish"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="VDC Establish"
@@ -149,6 +155,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_waterHarvestingScheme_progressTillDate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Progress Till Date"
@@ -157,6 +164,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:id="@+id/bt_waterHarvestingScheme_submit"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_gravity="center"

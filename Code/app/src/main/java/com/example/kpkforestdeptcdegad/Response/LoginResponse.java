@@ -42,22 +42,39 @@ public class LoginResponse {
         this.message = message;
     }
 
-
     @SerializedName("id")
     @Expose
     private String id;
     @SerializedName("full_name")
     @Expose
     private String fullName;
-    @SerializedName("email")
+    @SerializedName("gender")
     @Expose
-    private String email;
+    private String gender;
+    @SerializedName("cnic")
+    @Expose
+    private String cnic;
+    @SerializedName("employee_no")
+    @Expose
+    private String employeeNo;
     @SerializedName("mobile")
     @Expose
     private String mobile;
+    @SerializedName("division")
+    @Expose
+    private String division;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("date_time")
+    @Expose
+    private String dateTime;
 
     public String getId() {
         return id;
@@ -75,12 +92,28 @@ public class LoginResponse {
         this.fullName = fullName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGender() {
+        return gender;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCnic() {
+        return cnic;
+    }
+
+    public void setCnic(String cnic) {
+        this.cnic = cnic;
+    }
+
+    public String getEmployeeNo() {
+        return employeeNo;
+    }
+
+    public void setEmployeeNo(String employeeNo) {
+        this.employeeNo = employeeNo;
     }
 
     public String getMobile() {
@@ -91,6 +124,30 @@ public class LoginResponse {
         this.mobile = mobile;
     }
 
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getImage() {
         return image;
     }
@@ -98,4 +155,13 @@ public class LoginResponse {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
 }

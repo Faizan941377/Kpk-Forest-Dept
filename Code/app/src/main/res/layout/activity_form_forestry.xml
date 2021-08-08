@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
-            android:text="Form Forestry"
+            android:text="Farm Forestry"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
             android:textSize="20dp"
@@ -50,9 +50,10 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_farm_forestry_FarmAgroForestry"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Form | Agro | Forestry"
+                android:hint="Farm | Agro | Forestry"
                 android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +68,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_farm_forestry_NameOfForestDivisionNameRange"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Name of Forest Division | Range"
@@ -84,6 +86,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_farm_forestry_TotalNoOfPlantsDistributedSoFar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Total No of Plants Distributed So For"
@@ -100,7 +103,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
+                android:id="@+id/et_farm_forestry_NameOfSubDivisionRange"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Name of Sub-Division Range"
@@ -117,7 +120,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
+                android:id="@+id/et_farm_forestry_PlantsDistributedToday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Plants Distributed Today"
@@ -134,7 +137,7 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_vdc_contact"
+                android:id="@+id/et_farm_forestry_TotalNoOfPlantsDistributedTillDate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Total Number of Plants Distributed Till Date"
@@ -143,6 +146,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/bt_Farm_Forestry_submit"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_gravity="center"

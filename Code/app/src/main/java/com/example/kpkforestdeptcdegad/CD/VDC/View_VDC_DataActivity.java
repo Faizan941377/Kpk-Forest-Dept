@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,7 +29,8 @@ public class View_VDC_DataActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     EditText searchET;
     List<FetchVDCDataModel> fetchVDCDataModelList;
-    VDC_Adapter vdcAdapter;
+
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class View_VDC_DataActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         searchET = findViewById(R.id.et_search);
 
+        progressDialog = new ProgressDialog(this);
+
         setAdapter();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -48,35 +52,6 @@ public class View_VDC_DataActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
-       /* searchET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-        });
-    }
-
-    private void filter(String text) {
-        ArrayList<FetchVDCData> filterList = new ArrayList<>();
-        for (FetchVDCData item: fetchVDCDataList){
-            if (item.getName_of_forest_divsion().toLowerCase().contains(text.toLowerCase())){
-                filterList.add(item);
-            }
-        }
-
-        vdcAdapter.filteredList(filterList);
-*/
     }
 
 
@@ -85,11 +60,15 @@ public class View_VDC_DataActivity extends AppCompatActivity {
         vdcViewRV.setHasFixedSize(true);
         vdcViewRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
         Call<FetchVDCDataResponse> call = RetrofitClient.getInstance().getApi().fetchVdcDataResponse();
         call.enqueue(new Callback<FetchVDCDataResponse>() {
             @Override
             public void onResponse(Call<FetchVDCDataResponse> call, Response<FetchVDCDataResponse> response) {
                 if (response.isSuccessful()) {
+                    progressDialog.dismiss();
                     fetchVDCDataModelList = response.body().getVdcData();
                     vdcViewRV.setAdapter(new VDC_Adapter((ArrayList<FetchVDCDataModel>) fetchVDCDataModelList, getApplicationContext()));
                 }

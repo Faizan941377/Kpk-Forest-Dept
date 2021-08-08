@@ -60,6 +60,22 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_empNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Employee No" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/EditTextOutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/colorBlack"
+                    app:hintTextColor="@color/colorBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_forestDivision"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Forest Division" />
@@ -75,6 +91,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Date"
@@ -91,6 +108,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_targetAsPc1Enclosure"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Target as per PC-1 Enclosure"
@@ -107,6 +125,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_siteForEnclosureAchieved"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Site for enclosure Achieved"
@@ -123,6 +142,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_vdcEstablishment"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="VDCs Established"
@@ -139,6 +159,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_NigehbansHired"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Nigehbans hired"
@@ -155,6 +176,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_paymentUpTo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Payment up to"
@@ -171,6 +193,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_balanceTarget"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Balance Target"
@@ -181,22 +204,23 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextOutline"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
                     app:boxStrokeColor="@color/colorBlack"
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_enclosure_remarks"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:gravity="start"
-                        android:hint="Remarks"
-                        android:inputType="text" />
+                        android:hint="Remark's"
+                        android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:id="@+id/bt_enclosure_submit"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
