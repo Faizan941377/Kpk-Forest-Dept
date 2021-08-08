@@ -79,7 +79,7 @@ public class View_VDC_DataActivity extends AppCompatActivity {
                 try {
                     Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
         });

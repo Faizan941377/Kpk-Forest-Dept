@@ -4,16 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.Enclosure.Adapter.EnclosureAdapter;
 import com.example.kpkforestdeptcdegad.CD.FormForestry.Adapter.FormForestryAdapter;
+import com.example.kpkforestdeptcdegad.CD.VDC.Adapter.VDC_Adapter;
+import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
+import com.example.kpkforestdeptcdegad.Model.FetchVDCDataModel;
+import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
+import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class View_Enclosure_DataActivity extends AppCompatActivity {
 
     RecyclerView enclosureRV;
-    EnclosureAdapter enclosureAdapter;
+    List<FetchEnclosureDataModel> fetchEnclosureDataModelList;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +38,39 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view__enclosure__data);
 
         enclosureRV = findViewById(R.id.rv_view_enclosure);
+        progressDialog = new ProgressDialog(this);
 
         setAdapter();
     }
 
     private void setAdapter() {
-        enclosureAdapter = new EnclosureAdapter(this);
-        enclosureRV.setLayoutManager(new LinearLayoutManager(this));
-        enclosureRV.setAdapter(enclosureAdapter);
+        enclosureRV.setHasFixedSize(true);
+        enclosureRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
+
+        Call<FetchEnclosureResponse> call = RetrofitClient.getInstance().getApi().fetchEnclosureResponse();
+        call.enqueue(new Callback<FetchEnclosureResponse>() {
+            @Override
+            public void onResponse(Call<FetchEnclosureResponse> call, Response<FetchEnclosureResponse> response) {
+                if (response.isSuccessful()) {
+                    progressDialog.dismiss();
+                    fetchEnclosureDataModelList = response.body().getFetchEnclosureDataModelList();
+                    enclosureRV.setAdapter(new EnclosureAdapter((ArrayList<FetchEnclosureDataModel>) fetchEnclosureDataModelList, getApplicationContext()));
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FetchEnclosureResponse> call, Throwable t) {
+                try {
+                    Toast.makeText(View_Enclosure_DataActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

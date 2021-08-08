@@ -1,8 +1,10 @@
 package com.example.kpkforestdeptcdegad.Network;
 
 
+import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
 import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
 import com.example.kpkforestdeptcdegad.Response.EnclosureResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
@@ -85,4 +87,8 @@ public interface Webservices {
             @Field("balance_target") String balance_target,
             @Field("remarks") String remarks
     );
+
+
+    @GET("fetchEnclosureData.php")
+    Call<FetchEnclosureResponse> fetchEnclosureResponse();
 }
