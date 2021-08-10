@@ -15,8 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".user.Profile.UpdateProfileActivity"
+        <activity android:name=".CD.WaterSoruceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".user.Profile.UpdateProfileActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
         <receiver android:name=".BroadCast.NetworkChangeReceiver">
             <intent-filter>

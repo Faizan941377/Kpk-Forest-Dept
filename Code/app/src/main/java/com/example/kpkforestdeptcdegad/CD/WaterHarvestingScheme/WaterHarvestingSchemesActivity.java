@@ -28,9 +28,9 @@ public class WaterHarvestingSchemesActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_harvesting_schemes);
 
-        waterHarvestingSchemeET = findViewById(R.id.et_waterHarvestingScheme_waterHarvestingScheme);
+        //waterHarvestingSchemeET = findViewById(R.id.et_waterHarvestingScheme_waterHarvestingScheme);
         nameOfForestDivisionET = findViewById(R.id.et_waterHarvestingScheme_NameOfForestDivision);
-        waterSourceDevelopmentSchemeET = findViewById(R.id.et_waterHarvestingScheme_waterSourceDevelopmentScheme);
+       // waterSourceDevelopmentSchemeET = findViewById(R.id.et_waterHarvestingScheme_waterSourceDevelopmentScheme);
         targetAsPC1ET = findViewById(R.id.et_waterHarvestingScheme_TargetAsPC1);
         achievedSoFarNoET = findViewById(R.id.et_waterHarvestingScheme_AchievedSoFarNo);
         vdcEstablishET = findViewById(R.id.et_waterHarvestingScheme_vdcEstablish);

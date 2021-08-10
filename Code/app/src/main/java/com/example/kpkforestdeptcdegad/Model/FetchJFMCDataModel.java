@@ -2,6 +2,8 @@ package com.example.kpkforestdeptcdegad.Model;
 
 public class FetchJFMCDataModel {
 
+    String employee_no;
+    String employee_name;
     String name_of_forest_division;
     String name_of_sub_division_range;
     String name_of_village_vdc;
@@ -11,9 +13,11 @@ public class FetchJFMCDataModel {
     String contact;
     String time_date;
 
-    public FetchJFMCDataModel(String name_of_forest_division, String name_of_sub_division_range,
+    public FetchJFMCDataModel(String employee_no, String employee_name, String name_of_forest_division, String name_of_sub_division_range,
                               String name_of_village_vdc, String name_of_jfmc, String date_of_establishment_registration,
                               String name_of_president, String contact, String time_date) {
+        this.employee_no = employee_no;
+        this.employee_name = employee_name;
         this.name_of_forest_division = name_of_forest_division;
         this.name_of_sub_division_range = name_of_sub_division_range;
         this.name_of_village_vdc = name_of_village_vdc;
@@ -22,6 +26,22 @@ public class FetchJFMCDataModel {
         this.name_of_president = name_of_president;
         this.contact = contact;
         this.time_date = time_date;
+    }
+
+    public String getEmployee_no() {
+        return employee_no;
+    }
+
+    public void setEmployee_no(String employee_no) {
+        this.employee_no = employee_no;
+    }
+
+    public String getEmployee_name() {
+        return employee_name;
+    }
+
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
     public String getName_of_forest_division() {

@@ -15,52 +15,59 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kpkforestdeptcdegad.Model.FetchFarmForestryDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
-public class FormForestryAdapter extends RecyclerView.Adapter<FormForestryAdapter.FormForestryVH> {
+import java.util.List;
 
+public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapter.FormForestryVH> {
+
+    List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList;
     Context mContext;
 
-    public FormForestryAdapter(Context mContext) {
+    public FarmForestryAdapter(List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList, Context mContext) {
+        this.fetchFarmForestryDataModelList = fetchFarmForestryDataModelList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public FormForestryAdapter.FormForestryVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FarmForestryAdapter.FormForestryVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.row_view_form_forestry,parent,false);
         return new FormForestryVH(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FormForestryAdapter.FormForestryVH holder, int position) {
-
+    public void onBindViewHolder(@NonNull FarmForestryAdapter.FormForestryVH holder, int position) {
+        holder.empNoTV.setText(fetchFarmForestryDataModelList.get(position).getEmployee_no());
+        holder.empNameTV.setText(fetchFarmForestryDataModelList.get(position).getEmployee_name());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return fetchFarmForestryDataModelList.size();
     }
 
     public class FormForestryVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView showMoreTV;
+        TextView empNoTV;
+        TextView empNameTV;
         CardView expendingCardView;
         LinearLayout expendableLinearLayout2;
-        LinearLayout editBT;
 
         public FormForestryVH(@NonNull View itemView) {
             super(itemView);
 
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
+            empNoTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_Employee_No);
+            empNameTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_empName);
             expendingCardView = itemView.findViewById(R.id.cardView_row_vdc);
             expendableLinearLayout2 = itemView.findViewById(R.id.LL2_expendableTextView);
-            editBT = itemView.findViewById(R.id.bt_edit_row_vdc);
 
 
 
             showMoreTV.setOnClickListener(this);
-            editBT.setOnClickListener(this);
 
         }
 

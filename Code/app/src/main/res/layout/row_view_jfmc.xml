@@ -15,6 +15,56 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/tv_da"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Emp No :"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_rowViewJfmc_Employee_No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_da"
+                android:layout_marginLeft="8dp"
+                android:text="00000"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name :"
+                android:layout_toLeftOf="@+id/tv_rowViewJfmc_empName"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_rowViewJfmc_empName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_marginLeft="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/LL_main"
             android:layout_width="match_parent"

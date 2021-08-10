@@ -6,18 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.Enclosure.Adapter.EnclosureAdapter;
-import com.example.kpkforestdeptcdegad.CD.FormForestry.Adapter.FormForestryAdapter;
-import com.example.kpkforestdeptcdegad.CD.VDC.Adapter.VDC_Adapter;
 import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
-import com.example.kpkforestdeptcdegad.Model.FetchVDCDataModel;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
-import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +42,7 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
         enclosureRV.setHasFixedSize(true);
         enclosureRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.show();
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(true);
@@ -58,7 +54,7 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     progressDialog.dismiss();
                     fetchEnclosureDataModelList = response.body().getFetchEnclosureDataModelList();
-                    enclosureRV.setAdapter(new EnclosureAdapter((ArrayList<FetchEnclosureDataModel>) fetchEnclosureDataModelList, getApplicationContext()));
+                    enclosureRV.setAdapter(new EnclosureAdapter(fetchEnclosureDataModelList, getApplicationContext()));
 
                 }
             }

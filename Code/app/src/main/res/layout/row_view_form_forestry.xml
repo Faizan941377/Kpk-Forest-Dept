@@ -25,7 +25,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="Date :"
+                android:text="Emp No :"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_rowViewFarmForestry_Employee_No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/tv_da"
+                android:text="00000"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -33,31 +44,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@+id/tv_da"
-                android:text="12/12/21"
+                android:text="Name :"
+                android:layout_toLeftOf="@+id/tv_rowViewFarmForestry_empName"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/bt_edit_row_vdc"
-                android:layout_width="50dp"
-                android:layout_height="20dp"
+            <TextView
+                android:id="@+id/tv_rowViewFarmForestry_empName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="TextView"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/edit_btn_shape">
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:textSize="12dp"
-                    android:textColor="@color/color_basic_red"/>
-
-            </LinearLayout>
 
         </RelativeLayout>
 

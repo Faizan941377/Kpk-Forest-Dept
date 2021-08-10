@@ -3,6 +3,8 @@ package com.example.kpkforestdeptcdegad.Model;
 public class FetchVDCDataModel {
 
     String id;
+    String employee_no;
+    String employee_name;
     String name_of_forest_divsion;
     String name_of_sub_division_range;
     String name_of_village;
@@ -15,10 +17,13 @@ public class FetchVDCDataModel {
     String image;
     String date_time;
 
-    public FetchVDCDataModel(String id, String name_of_forest_divsion, String name_of_sub_division_range, String name_of_village,
-                             String name_of_vdc_jfmc, String date_of_establishment_registration, String name_of_president, String contact,
+    public FetchVDCDataModel(String id, String employee_no, String employee_name, String name_of_forest_divsion,
+                             String name_of_sub_division_range, String name_of_village, String name_of_vdc_jfmc,
+                             String date_of_establishment_registration, String name_of_president, String contact,
                              String jfmc_wo, String total_member, String image, String date_time) {
         this.id = id;
+        this.employee_no = employee_no;
+        this.employee_name = employee_name;
         this.name_of_forest_divsion = name_of_forest_divsion;
         this.name_of_sub_division_range = name_of_sub_division_range;
         this.name_of_village = name_of_village;
@@ -38,6 +43,22 @@ public class FetchVDCDataModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEmployee_no() {
+        return employee_no;
+    }
+
+    public void setEmployee_no(String employee_no) {
+        this.employee_no = employee_no;
+    }
+
+    public String getEmployee_name() {
+        return employee_name;
+    }
+
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
     public String getName_of_forest_divsion() {

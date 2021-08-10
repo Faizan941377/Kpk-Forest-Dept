@@ -40,6 +40,8 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
 
     @Override
     public void onBindViewHolder(@NonNull JFMC_Adapter.JFMCVH holder, int position) {
+        holder.employeeNoTV.setText(fetchJFMCDataModelList.get(position).getEmployee_no());
+        holder.employeeNameTV.setText(fetchJFMCDataModelList.get(position).getEmployee_name());
         holder.forestDivisionTV.setText(fetchJFMCDataModelList.get(position).getName_of_forest_division());
         holder.subDivisionRangeTV.setText(fetchJFMCDataModelList.get(position).getName_of_sub_division_range());
         holder.nameOfVillageTV.setText(fetchJFMCDataModelList.get(position).getName_of_village_vdc());
@@ -62,6 +64,8 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
 
     public class JFMCVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        TextView employeeNoTV;
+        TextView employeeNameTV;
         TextView showMoreTV;
         TextView forestDivisionTV;
         TextView subDivisionRangeTV;
@@ -77,6 +81,8 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
         public JFMCVH(@NonNull View itemView) {
             super(itemView);
 
+            employeeNoTV = itemView.findViewById(R.id.tv_rowViewJfmc_Employee_No);
+            employeeNameTV = itemView.findViewById(R.id.tv_rowViewJfmc_empName);
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
             expendingCardView = itemView.findViewById(R.id.cardView_row_vdc);
             expendableLinearLayout2 = itemView.findViewById(R.id.LL2_expendableTextView);

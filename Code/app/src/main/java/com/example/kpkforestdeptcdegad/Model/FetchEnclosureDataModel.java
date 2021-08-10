@@ -3,6 +3,7 @@ package com.example.kpkforestdeptcdegad.Model;
 public class FetchEnclosureDataModel {
 
     String employee_No;
+    String employee_name;
     String forest_division;
     String entry_date;
     String target_as_pc_1_enclosure;
@@ -14,10 +15,12 @@ public class FetchEnclosureDataModel {
     String remarks;
     String date_time;
 
-    public FetchEnclosureDataModel(String employee_No, String forest_division, String entry_date, String target_as_pc_1_enclosure,
-                                   String site_for_enclosure_achieved, String vdc_established, String nigehbans_hired,
-                                   String payment_upto, String balance_target, String remarks, String date_time) {
+    public FetchEnclosureDataModel(String employee_No, String employee_name, String forest_division, String entry_date,
+                                   String target_as_pc_1_enclosure, String site_for_enclosure_achieved, String vdc_established,
+                                   String nigehbans_hired, String payment_upto, String balance_target, String remarks,
+                                   String date_time) {
         this.employee_No = employee_No;
+        this.employee_name = employee_name;
         this.forest_division = forest_division;
         this.entry_date = entry_date;
         this.target_as_pc_1_enclosure = target_as_pc_1_enclosure;
@@ -36,6 +39,14 @@ public class FetchEnclosureDataModel {
 
     public void setEmployee_No(String employee_No) {
         this.employee_No = employee_No;
+    }
+
+    public String getEmployee_name() {
+        return employee_name;
+    }
+
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
     public String getForest_division() {
@@ -110,11 +121,11 @@ public class FetchEnclosureDataModel {
         this.remarks = remarks;
     }
 
-    public String getTime_date() {
+    public String getDate_time() {
         return date_time;
     }
 
-    public void setTime_date(String date_time) {
+    public void setDate_time(String date_time) {
         this.date_time = date_time;
     }
 }

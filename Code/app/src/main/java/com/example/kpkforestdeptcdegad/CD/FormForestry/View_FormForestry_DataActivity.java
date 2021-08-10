@@ -4,16 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
-import com.example.kpkforestdeptcdegad.CD.FormForestry.Adapter.FormForestryAdapter;
-import com.example.kpkforestdeptcdegad.CD.VDC.Adapter.VDC_Adapter;
+import com.example.kpkforestdeptcdegad.CD.FormForestry.Adapter.FarmForestryAdapter;
+import com.example.kpkforestdeptcdegad.Model.FetchFarmForestryDataModel;
+import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
+import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class View_FormForestry_DataActivity extends AppCompatActivity {
 
     RecyclerView viewFormForestryRV;
-    FormForestryAdapter formForestryAdapter;
+    List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +31,34 @@ public class View_FormForestry_DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view__form_forestry_data);
 
         viewFormForestryRV = findViewById(R.id.rv_view_formForestry);
-
+        progressDialog = new ProgressDialog(this);
         setAdapter();
     }
 
     private void setAdapter() {
-        formForestryAdapter = new FormForestryAdapter(this);
-        viewFormForestryRV.setLayoutManager(new LinearLayoutManager(this));
-        viewFormForestryRV.setAdapter(formForestryAdapter);
+        viewFormForestryRV.setHasFixedSize(true);
+        viewFormForestryRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.show();
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
+
+        Call<FetchFarmForestryResponse> call = RetrofitClient.getInstance().getApi().fetchFetchFarmForestryResponse();
+        call.enqueue(new Callback<FetchFarmForestryResponse>() {
+            @Override
+            public void onResponse(Call<FetchFarmForestryResponse> call, Response<FetchFarmForestryResponse> response) {
+                if (response.isSuccessful()){
+                    progressDialog.dismiss();
+                    fetchFarmForestryDataModelList = response.body().getFetchFarmForestryDataModelList();
+                    viewFormForestryRV.setAdapter(new FarmForestryAdapter(fetchFarmForestryDataModelList,getApplicationContext()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FetchFarmForestryResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

@@ -26,6 +26,9 @@ public class FetchEnclosureResponse {
     @SerializedName("employee_No")
     @Expose
     private String employeeNo;
+    @SerializedName("employee_name")
+    @Expose
+    private String employeeName;
     @SerializedName("forest_division")
     @Expose
     private String forestDivision;
@@ -71,6 +74,14 @@ public class FetchEnclosureResponse {
 
     public void setEmployeeNo(String employeeNo) {
         this.employeeNo = employeeNo;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     public String getForestDivision() {

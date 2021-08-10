@@ -43,6 +43,8 @@ public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
 
     @Override
     public void onBindViewHolder(@NonNull VDC_Adapter.VDCVH holder, int position) {
+        holder.employeeNoTV.setText(fetchVDCDataModelList.get(position).getEmployee_no());
+        holder.employeeNameTV.setText(fetchVDCDataModelList.get(position).getEmployee_name());
         holder.forestDivisionTV.setText(fetchVDCDataModelList.get(position).getName_of_forest_divsion());
         holder.subDivisionRangeTV.setText(fetchVDCDataModelList.get(position).getName_of_sub_division_range());
         holder.nameOfVillageTV.setText(fetchVDCDataModelList.get(position).getName_of_village());
@@ -71,6 +73,8 @@ public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
 
     public class VDCVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        TextView employeeNoTV;
+        TextView employeeNameTV;
         TextView showMoreTV;
         TextView forestDivisionTV;
         TextView subDivisionRangeTV;
@@ -89,6 +93,8 @@ public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
 
         public VDCVH(@NonNull View itemView) {
             super(itemView);
+            employeeNoTV = itemView.findViewById(R.id.tv_rowViewVdc_Employee_No);
+            employeeNameTV = itemView.findViewById(R.id.tv_rowViewVdc_empName);
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
             expendingCardView = itemView.findViewById(R.id.cardView_row_vdc);
             expendableLinearLayout2 = itemView.findViewById(R.id.LL2_expendableTextView);

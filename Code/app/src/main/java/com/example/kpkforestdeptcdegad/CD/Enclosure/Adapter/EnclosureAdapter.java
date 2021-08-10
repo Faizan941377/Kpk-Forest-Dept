@@ -41,6 +41,7 @@ public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.Encl
     @Override
     public void onBindViewHolder(@NonNull EnclosureAdapter.EnclosureVH holder, int position) {
         holder.employeeNoTV.setText(fetchEnclosureDataModelList.get(position).getEmployee_No());
+        holder.empNameTV.setText(fetchEnclosureDataModelList.get(position).getEmployee_name());
         holder.forestDivisionTV.setText(fetchEnclosureDataModelList.get(position).getForest_division());
         holder.DateTV.setText(fetchEnclosureDataModelList.get(position).getEntry_date());
         holder.targetAsPC1EnclosureTV.setText(fetchEnclosureDataModelList.get(position).getTarget_as_pc_1_enclosure());
@@ -50,7 +51,7 @@ public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.Encl
         holder.paymentUptoTV.setText(fetchEnclosureDataModelList.get(position).getPayment_upto());
         holder.balanceTargetTV.setText(fetchEnclosureDataModelList.get(position).getBalance_target());
         holder.remarksTV.setText(fetchEnclosureDataModelList.get(position).getRemarks());
-        holder.timeDateTV.setText(fetchEnclosureDataModelList.get(position).getTime_date());
+        holder.timeDateTV.setText(fetchEnclosureDataModelList.get(position).getDate_time());
     }
 
     @Override
@@ -62,6 +63,7 @@ public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.Encl
 
         TextView showMoreTV;
         TextView employeeNoTV;
+        TextView empNameTV;
         TextView forestDivisionTV;
         TextView DateTV;
         TextView targetAsPC1EnclosureTV;
@@ -79,6 +81,7 @@ public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.Encl
             super(itemView);
 
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
+            empNameTV =itemView.findViewById(R.id.tv_rowViewEnclosure_empName);
             employeeNoTV = itemView.findViewById(R.id.tv_rowViewEnclosure_Employee_No);
             forestDivisionTV = itemView.findViewById(R.id.tv_rowViewEnclosure_ForestDivision);
             DateTV = itemView.findViewById(R.id.tv_rowViewEnclosure_Date);

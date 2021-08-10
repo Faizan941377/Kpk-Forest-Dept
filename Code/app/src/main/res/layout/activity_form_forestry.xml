@@ -46,32 +46,15 @@
             style="@style/EditTextOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/colorBlack"
-            app:hintTextColor="@color/colorBlack">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_farm_forestry_FarmAgroForestry"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Farm | Agro | Forestry"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/EditTextOutline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/colorBlack"
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_farm_forestry_NameOfForestDivisionNameRange"
+                android:id="@+id/et_farm_forestry_empNo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Name of Forest Division | Range"
+                android:hint="Employee No"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -86,10 +69,10 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_farm_forestry_TotalNoOfPlantsDistributedSoFar"
+                android:id="@+id/et_farm_forestry_empName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Total No of Plants Distributed So For"
+                android:hint="Employee Name"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,13 +86,32 @@
             app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_farm_forestry_NameOfSubDivisionRange"
+                android:id="@+id/et_farm_forestry_NameOfForestDivision"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Name of Sub-Division Range"
+                android:hint="Name of Forest Division"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/EditTextOutline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:boxStrokeColor="@color/colorBlack"
+            app:hintTextColor="@color/colorBlack">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_farm_forestry_NameOfSubDivision"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Name of Sub-Division"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/EditTextOutline"
@@ -127,6 +129,25 @@
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/EditTextOutline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:boxStrokeColor="@color/colorBlack"
+            app:hintTextColor="@color/colorBlack">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_farm_forestry_TotalNoOfPlantsDistributedToday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Total No of Plants Distributed Today"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/EditTextOutline"

@@ -24,6 +24,7 @@ import retrofit2.Response;
 public class EnclosureActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText employeeET;
+    EditText employeeNameET;
     EditText forestDivisionET;
     EditText dateET;
     EditText targetAsPc1EnclosureET;
@@ -44,6 +45,7 @@ public class EnclosureActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_enclousure);
 
         employeeET = findViewById(R.id.et_enclosure_empNo);
+        employeeNameET = findViewById(R.id.et_enclosure_empName);
         forestDivisionET = findViewById(R.id.et_enclosure_forestDivision);
         dateET = findViewById(R.id.et_enclosure_date);
         targetAsPc1EnclosureET = findViewById(R.id.et_enclosure_targetAsPc1Enclosure);
@@ -58,6 +60,8 @@ public class EnclosureActivity extends AppCompatActivity implements View.OnClick
 
         LoginModel loginModel = SharePrefManager.getInstance(this).getUsers();
         employeeET.setText("" + loginModel.getEmployee_no());
+        employeeNameET.setText("" + loginModel.getFull_name());
+        employeeNameET.setEnabled(false);
         employeeET.setEnabled(false);
 
         progressDialog = new ProgressDialog(this);

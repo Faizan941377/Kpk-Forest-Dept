@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="Employee No :"
+                android:text="Emp No :"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -37,6 +37,27 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@+id/tv_da"
                 android:text="00000"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name :"
+                android:layout_toLeftOf="@+id/tv_rowViewEnclosure_empName"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_rowViewEnclosure_empName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="TextView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="8dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold" />

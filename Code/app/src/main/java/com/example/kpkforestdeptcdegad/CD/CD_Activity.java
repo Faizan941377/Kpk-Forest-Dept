@@ -20,6 +20,7 @@ import com.example.kpkforestdeptcdegad.CD.VDC.VDC_Activity;
 import com.example.kpkforestdeptcdegad.CD.VDC.View_VDC_DataActivity;
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity;
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.WaterHarvestingSchemesActivity;
+import com.example.kpkforestdeptcdegad.CD.WaterSoruceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity;
 import com.example.kpkforestdeptcdegad.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -30,6 +31,7 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
     CardView gfmcBT;
     CardView waterHarvestingSchemesBT;
     CardView formForestryBT;
+    CardView waterSourceDevelopmentSchemesBT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         gfmcBT = findViewById(R.id.bt_cd_gfmc);
         waterHarvestingSchemesBT = findViewById(R.id.bt_cd_waterHarvestingSchemes);
         formForestryBT = findViewById(R.id.bt_cd_formForestry);
+        waterSourceDevelopmentSchemesBT = findViewById(R.id.bt_cd_waterSourceDevelopmentSchemes);
 
 
         vcdBT.setOnClickListener(this);
@@ -48,6 +51,7 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
         gfmcBT.setOnClickListener(this);
         waterHarvestingSchemesBT.setOnClickListener(this);
         formForestryBT.setOnClickListener(this);
+        waterSourceDevelopmentSchemesBT.setOnClickListener(this);
 
     }
 
@@ -74,6 +78,10 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
                 AddViewRecordWaterHarvestingSchemes();
                 break;
 
+            case R.id.bt_cd_waterSourceDevelopmentSchemes:
+                Intent intent = new Intent(this, WaterSoruceDevelopmentSchemeActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 

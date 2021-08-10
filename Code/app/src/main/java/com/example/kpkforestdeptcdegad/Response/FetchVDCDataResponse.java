@@ -19,6 +19,12 @@ public class FetchVDCDataResponse {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("employee_no")
+    @Expose
+    private String employeeNo;
+    @SerializedName("employee_name")
+    @Expose
+    private String employeeName;
     @SerializedName("name_of_forest_divsion")
     @Expose
     private String nameOfForestDivsion;
@@ -59,6 +65,22 @@ public class FetchVDCDataResponse {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEmployeeNo() {
+        return employeeNo;
+    }
+
+    public void setEmployeeNo(String employeeNo) {
+        this.employeeNo = employeeNo;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     public String getNameOfForestDivsion() {
@@ -148,4 +170,5 @@ public class FetchVDCDataResponse {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
+
 }
