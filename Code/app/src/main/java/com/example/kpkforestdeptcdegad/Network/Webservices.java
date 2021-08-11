@@ -11,10 +11,12 @@ import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
 import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
 import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterHarvestingSchemeResponse;
+import com.example.kpkforestdeptcdegad.Response.WaterSourceDevelopmentSchemeResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -129,4 +131,21 @@ public interface Webservices {
 
     @GET("fetchCDWaterHarvestingSchemeData.php")
     Call<FetchWaterHarvestingSchemeResponse> fetchWaterHarvestingResponse();
+
+
+    @FormUrlEncoded
+    @POST("cd_waterSourceDevelopmentScheme.php")
+    Call<WaterSourceDevelopmentSchemeResponse> waterSourceDevelopmentSchemeResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("name_of_division") String name_of_division,
+            @Field("name_of_forest_division") String name_of_forest_division,
+            @Field("target_as_pc_1") String target_as_pc_1,
+            @Field("achieved_so_far_no") String achieved_so_far_no,
+            @Field("vdc_established") String vdc_established,
+            @Field("progress_till_date") String progress_till_date
+    );
+
+    @GET("fetchCDWaterSourceDevelopmentScheme.php")
+    Call<FetchWaterSourceDevelopSchemeResponse> fetchWaterSourceDevelopSchemeResponse();
 }

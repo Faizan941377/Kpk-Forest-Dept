@@ -31,7 +31,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_rowViewWaterHarvestingScheme_Employee_No"
+                android:id="@+id/tv_rowViewWaterSourceScheme_Employee_No"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_da"
@@ -45,13 +45,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name :"
-                android:layout_toLeftOf="@+id/tv_rowVIewWaterHarvestingScheme_empName"
+                android:layout_toLeftOf="@+id/tv_rowVIewWaterSourceScheme_empName"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_rowVIewWaterHarvestingScheme_empName"
+                android:id="@+id/tv_rowVIewWaterSourceScheme_empName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
@@ -122,7 +122,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_rowViewWaterHarvestingScheme_nameOfDivision"
+                        android:id="@+id/tv_rowViewWaterSourceScheme_nameOfDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -139,7 +139,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_rowVIewWaterHarvestingScheme_nameOfForestDivision"
+                        android:id="@+id/tv_rowVIewWaterSourceScheme_nameOfForestDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -207,7 +207,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewWaterHarvestingScheme_targetAsPC1"
+                            android:id="@+id/tv_rowViewWaterSourceScheme_targetAsPC1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -224,7 +224,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewWaterHarvestingScheme_achieveSoFarNo"
+                            android:id="@+id/tv_rowViewWaterSourceScheme_achieveSoFarNo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TextView"
@@ -285,7 +285,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewWaterHarvestingScheme_vdcEstablished"
+                            android:id="@+id/tv_rowViewWaterSourceScheme_vdcEstablished"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -302,7 +302,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewWaterHarvestingScheme_progressTillDate"
+                            android:id="@+id/tv_rowViewWaterSourceScheme_progressTillDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TextView"
@@ -328,7 +328,7 @@
                 android:textColor="@color/colorWhite" />
 
             <TextView
-                android:id="@+id/tv_rowViewWaterHarvestingScheme_timeDate"
+                android:id="@+id/tv_rowViewWaterSourceScheme_timeDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00pm"

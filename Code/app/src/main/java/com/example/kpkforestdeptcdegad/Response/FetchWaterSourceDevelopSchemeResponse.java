@@ -1,5 +1,6 @@
 package com.example.kpkforestdeptcdegad.Response;
 
+import com.example.kpkforestdeptcdegad.Model.FetchWaterSourceDevelopSchemeDataModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,16 +11,15 @@ public class FetchWaterSourceDevelopSchemeResponse {
 
     @SerializedName("users")
     @Expose
-    private List<FetchWaterSourceDevelopSchemeResponse> fetchWaterSourceDevelopSchemeResponseList = null;
+    private List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList = null;
 
-    public List<FetchWaterSourceDevelopSchemeResponse> getFetchWaterSourceDevelopSchemeResponseList() {
-        return fetchWaterSourceDevelopSchemeResponseList;
+    public List<FetchWaterSourceDevelopSchemeDataModel> getFetchWaterSourceDevelopSchemeDataModelList() {
+        return fetchWaterSourceDevelopSchemeDataModelList;
     }
 
-    public void setUsers(List<FetchWaterSourceDevelopSchemeResponse> fetchWaterSourceDevelopSchemeResponseList) {
-        this.fetchWaterSourceDevelopSchemeResponseList = fetchWaterSourceDevelopSchemeResponseList;
+    public void setFetchWaterSourceDevelopSchemeDataModelList(List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList) {
+        this.fetchWaterSourceDevelopSchemeDataModelList = fetchWaterSourceDevelopSchemeDataModelList;
     }
-
 
     @SerializedName("id")
     @Expose
@@ -30,6 +30,9 @@ public class FetchWaterSourceDevelopSchemeResponse {
     @SerializedName("employee_name")
     @Expose
     private String employeeName;
+    @SerializedName("name_of_division")
+    @Expose
+    private String nameOfDivision;
     @SerializedName("name_of_forest_division")
     @Expose
     private String nameOfForestDivision;
@@ -71,6 +74,14 @@ public class FetchWaterSourceDevelopSchemeResponse {
 
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
+    }
+
+    public String getNameOfDivision() {
+        return nameOfDivision;
+    }
+
+    public void setNameOfDivision(String nameOfDivision) {
+        this.nameOfDivision = nameOfDivision;
     }
 
     public String getNameOfForestDivision() {
@@ -122,4 +133,3 @@ public class FetchWaterSourceDevelopSchemeResponse {
     }
 
 }
-

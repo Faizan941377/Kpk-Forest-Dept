@@ -2,8 +2,9 @@ package com.example.kpkforestdeptcdegad.Model;
 
 public class FetchWaterSourceDevelopSchemeDataModel {
 
-    String employee_No;
-    String employee_Name;
+    String employee_no;
+    String employee_name;
+    String name_of_division;
     String name_of_forest_division;
     String target_as_pc_1;
     String achieved_so_far_no;
@@ -11,11 +12,12 @@ public class FetchWaterSourceDevelopSchemeDataModel {
     String progress_till_date;
     String date_time;
 
-    public FetchWaterSourceDevelopSchemeDataModel(String employee_No, String employee_Name, String name_of_forest_division,
-                                                  String target_as_pc_1, String achieved_so_far_no, String vdc_established,
-                                                  String progress_till_date, String date_time) {
-        this.employee_No = employee_No;
-        this.employee_Name = employee_Name;
+    public FetchWaterSourceDevelopSchemeDataModel(String employee_no, String employee_name, String name_of_division,
+                                                  String name_of_forest_division, String target_as_pc_1, String achieved_so_far_no,
+                                                  String vdc_established, String progress_till_date, String date_time) {
+        this.employee_no = employee_no;
+        this.employee_name = employee_name;
+        this.name_of_division = name_of_division;
         this.name_of_forest_division = name_of_forest_division;
         this.target_as_pc_1 = target_as_pc_1;
         this.achieved_so_far_no = achieved_so_far_no;
@@ -24,20 +26,28 @@ public class FetchWaterSourceDevelopSchemeDataModel {
         this.date_time = date_time;
     }
 
-    public String getEmployee_No() {
-        return employee_No;
+    public String getEmployee_no() {
+        return employee_no;
     }
 
-    public void setEmployee_No(String employee_No) {
-        this.employee_No = employee_No;
+    public void setEmployee_no(String employee_no) {
+        this.employee_no = employee_no;
     }
 
-    public String getEmployee_Name() {
-        return employee_Name;
+    public String getEmployee_name() {
+        return employee_name;
     }
 
-    public void setEmployee_Name(String employee_Name) {
-        this.employee_Name = employee_Name;
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
+    }
+
+    public String getName_of_division() {
+        return name_of_division;
+    }
+
+    public void setName_of_division(String name_of_division) {
+        this.name_of_division = name_of_division;
     }
 
     public String getName_of_forest_division() {
