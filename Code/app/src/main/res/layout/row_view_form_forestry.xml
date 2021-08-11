@@ -87,8 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:text="Form | Agro |
-                        Forestry"
+                        android:text="Name of Forest Division"
                         android:textColor="@color/colorBlack"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -103,7 +102,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name of Forest Division"
+                        android:text="Name of Sub Division"
                         android:textColor="@color/colorBlack"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -123,6 +122,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_rowViewFarmForestry_NameOfForestDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -139,6 +139,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_rowViewFarmForestry_nameOfSubDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -171,7 +172,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
-                            android:text="Total No of Plants Distributed So for"
+                            android:text="Plants Distributed Today"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Total No of Plants Distributed Today"
                             android:textColor="@color/colorBlack"
                             android:textSize="16dp"
                             android:textStyle="bold" />
@@ -191,6 +209,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/tv_rowViewFarmForestry_plantsDistributedToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -200,6 +219,72 @@
 
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_rowViewFarmForestry_totalNoOfPlantsDistributedToday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="TextView"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Total No of Plants Distributed Till Date"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_rowViewFarmForestry_totalNoOfPlantsDistributedTillDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="TextView"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -216,6 +301,7 @@
                 android:textColor="@color/colorWhite" />
 
             <TextView
+                android:id="@+id/tv_rowViewFarmForestry_dateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00pm"

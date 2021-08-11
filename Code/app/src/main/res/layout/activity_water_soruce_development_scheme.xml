@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CD.WaterSoruceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity">
+    tools:context=".CD.WaterSourceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity">
 
     <RelativeLayout
         android:id="@+id/action_bar"
@@ -59,7 +59,41 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_farm_forestry_NameOfSubDivisionRange"
+                        android:id="@+id/et_WaterSourceDevelop_empNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Employee No"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/EditTextOutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:boxStrokeColor="@color/colorBlack"
+                    app:hintTextColor="@color/colorBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_WaterSourceDevelop_empName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Employee Name"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/EditTextOutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:boxStrokeColor="@color/colorBlack"
+                    app:hintTextColor="@color/colorBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_WaterSourceDevelop_nameOfDivision"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of Division"
@@ -76,7 +110,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_waterHarvestingScheme_NameOfForestDivision"
+                        android:id="@+id/et_WaterSourceDevelop_nameOfForestDivision"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of Forest Division"
@@ -93,7 +127,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_waterHarvestingScheme_TargetAsPC1"
+                        android:id="@+id/et_WaterSourceDevelop_TargetAsPC1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Target As per PC-1"
@@ -109,7 +143,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_waterHarvestingScheme_AchievedSoFarNo"
+                        android:id="@+id/et_WaterSourceDevelop_AchievedSoFarNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Achieved So For No"
@@ -125,7 +159,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_waterHarvestingScheme_vdcEstablish"
+                        android:id="@+id/et_WaterSourceDevelop_vdcEstablish"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="VDC Establish"
@@ -141,7 +175,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_waterHarvestingScheme_progressTillDate"
+                        android:id="@+id/et_WaterSourceDevelop_progressTillDate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Progress Till Date"
@@ -150,7 +184,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
-                    android:id="@+id/bt_waterHarvestingScheme_submit"
+                    android:id="@+id/bt_waterSourceDevelopmentSchemes_submit"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_gravity="center"

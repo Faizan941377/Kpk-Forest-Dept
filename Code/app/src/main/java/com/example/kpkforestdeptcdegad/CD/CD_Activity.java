@@ -20,7 +20,8 @@ import com.example.kpkforestdeptcdegad.CD.VDC.VDC_Activity;
 import com.example.kpkforestdeptcdegad.CD.VDC.View_VDC_DataActivity;
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity;
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.WaterHarvestingSchemesActivity;
-import com.example.kpkforestdeptcdegad.CD.WaterSoruceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity;
+import com.example.kpkforestdeptcdegad.CD.WaterSourceDevelopmentScheme.ViewWaterSourceDevelopmentSchemeActivity;
+import com.example.kpkforestdeptcdegad.CD.WaterSourceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity;
 import com.example.kpkforestdeptcdegad.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -79,10 +80,41 @@ public class CD_Activity extends AppCompatActivity implements View.OnClickListen
                 break;
 
             case R.id.bt_cd_waterSourceDevelopmentSchemes:
-                Intent intent = new Intent(this, WaterSoruceDevelopmentSchemeActivity.class);
-                startActivity(intent);
+                AddViewRecordWaterSourceDevelopmentSchemes();
                 break;
         }
+    }
+
+    private void AddViewRecordWaterSourceDevelopmentSchemes() {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(CD_Activity.this
+                , R.style.BottomSheetDialogTheme);
+
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.bottom_sheet_layout, (LinearLayout) findViewById(R.id.bottom_sheet_container));
+        bottomSheetView.findViewById(R.id.bt_bottom_sheet_enterNewRecord).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WaterSoruceDevelopmentSchemeActivity.class);
+                startActivity(intent);
+                Toast.makeText(CD_Activity.this, "Add new Record", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+        bottomSheetView.findViewById(R.id.bt_bottom_sheet_viewRecord).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewWaterSourceDevelopmentSchemeActivity.class);
+                startActivity(intent);
+                Toast.makeText(CD_Activity.this, "View Record", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
     }
 
     private void AddViewRecordVCD() {

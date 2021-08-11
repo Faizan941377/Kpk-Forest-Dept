@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity">
+    tools:context=".CD.WaterSourceDevelopmentScheme.ViewWaterSourceDevelopmentSchemeActivity">
 
 
     <RelativeLayout
@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="View Water Harvesting Data"
+            android:text="View Water Source Development"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
             android:textStyle="bold" />

@@ -3,6 +3,7 @@ package com.example.kpkforestdeptcdegad.CD.FormForestry;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import retrofit2.Response;
 public class View_FormForestry_DataActivity extends AppCompatActivity {
 
     RecyclerView viewFormForestryRV;
+    SwipeRefreshLayout swipeRefreshLayout;
     List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList;
     ProgressDialog progressDialog;
 
@@ -31,8 +33,17 @@ public class View_FormForestry_DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view__form_forestry_data);
 
         viewFormForestryRV = findViewById(R.id.rv_view_formForestry);
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
         progressDialog = new ProgressDialog(this);
         setAdapter();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                setAdapter();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void setAdapter() {

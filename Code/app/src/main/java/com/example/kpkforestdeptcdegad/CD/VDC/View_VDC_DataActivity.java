@@ -29,7 +29,6 @@ public class View_VDC_DataActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     EditText searchET;
     List<FetchVDCDataModel> fetchVDCDataModelList;
-
     ProgressDialog progressDialog;
 
     @Override
@@ -42,7 +41,6 @@ public class View_VDC_DataActivity extends AppCompatActivity {
         searchET = findViewById(R.id.et_search);
 
         progressDialog = new ProgressDialog(this);
-
         setAdapter();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

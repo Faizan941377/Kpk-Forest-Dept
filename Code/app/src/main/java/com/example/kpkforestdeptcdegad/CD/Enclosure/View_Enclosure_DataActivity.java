@@ -3,6 +3,7 @@ package com.example.kpkforestdeptcdegad.CD.Enclosure;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import retrofit2.Response;
 public class View_Enclosure_DataActivity extends AppCompatActivity {
 
     RecyclerView enclosureRV;
+    SwipeRefreshLayout swipeRefreshLayout;
     List<FetchEnclosureDataModel> fetchEnclosureDataModelList;
     ProgressDialog progressDialog;
 
@@ -33,9 +35,17 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view__enclosure__data);
 
         enclosureRV = findViewById(R.id.rv_view_enclosure);
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
         progressDialog = new ProgressDialog(this);
 
         setAdapter();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                setAdapter();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void setAdapter() {

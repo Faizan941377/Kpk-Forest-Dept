@@ -277,7 +277,7 @@
                         android:layout_height="wrap_content"
                         android:text="Water Source Development Scheme"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:gravity="center"
                         android:layout_centerInParent="true"
                         android:textAllCaps="true"

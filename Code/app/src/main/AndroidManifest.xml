@@ -15,8 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CD.WaterSoruceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity"
+        <activity android:name=".CD.WaterSourceDevelopmentScheme.ViewWaterSourceDevelopmentSchemeActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".CD.WaterSourceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".user.Profile.UpdateProfileActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

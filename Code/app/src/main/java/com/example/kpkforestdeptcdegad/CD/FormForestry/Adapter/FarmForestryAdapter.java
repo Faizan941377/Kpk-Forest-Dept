@@ -41,6 +41,12 @@ public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapte
     public void onBindViewHolder(@NonNull FarmForestryAdapter.FormForestryVH holder, int position) {
         holder.empNoTV.setText(fetchFarmForestryDataModelList.get(position).getEmployee_no());
         holder.empNameTV.setText(fetchFarmForestryDataModelList.get(position).getEmployee_name());
+        holder.nameOfForestDivisionTV.setText(fetchFarmForestryDataModelList.get(position).getName_of_forest_division());
+        holder.nameOfSubDivisionTV.setText(fetchFarmForestryDataModelList.get(position).getName_of_sub_division());
+        holder.plantsDistributedTodayTV.setText(fetchFarmForestryDataModelList.get(position).getPlants_distributed_today());
+        holder.totalNoOfPlantsDistributedTodayTV.setText(fetchFarmForestryDataModelList.get(position).getTotal_no_of_plants_distributed_today());
+        holder.totalNoOfPlantsDistributedTillDateTV.setText(fetchFarmForestryDataModelList.get(position).getTotal_no_of_plants_distribute_till_date());
+        holder.dateTimeTV.setText(fetchFarmForestryDataModelList.get(position).getDate_time());
     }
 
     @Override
@@ -53,6 +59,12 @@ public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapte
         TextView showMoreTV;
         TextView empNoTV;
         TextView empNameTV;
+        TextView nameOfForestDivisionTV;
+        TextView nameOfSubDivisionTV;
+        TextView plantsDistributedTodayTV;
+        TextView totalNoOfPlantsDistributedTodayTV;
+        TextView totalNoOfPlantsDistributedTillDateTV;
+        TextView dateTimeTV;
         CardView expendingCardView;
         LinearLayout expendableLinearLayout2;
 
@@ -62,6 +74,12 @@ public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapte
             showMoreTV = itemView.findViewById(R.id.tv_rowViewVDC_showMore);
             empNoTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_Employee_No);
             empNameTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_empName);
+            nameOfForestDivisionTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_NameOfForestDivision);
+            nameOfSubDivisionTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_nameOfSubDivision);
+            plantsDistributedTodayTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_plantsDistributedToday);
+            totalNoOfPlantsDistributedTodayTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_totalNoOfPlantsDistributedToday);
+            totalNoOfPlantsDistributedTillDateTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_totalNoOfPlantsDistributedTillDate);
+            dateTimeTV = itemView.findViewById(R.id.tv_rowViewFarmForestry_dateTime);
             expendingCardView = itemView.findViewById(R.id.cardView_row_vdc);
             expendableLinearLayout2 = itemView.findViewById(R.id.LL2_expendableTextView);
 
@@ -76,10 +94,6 @@ public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapte
             switch (v.getId()){
                 case R.id.tv_rowViewVDC_showMore:
                     ShowMore(v);
-                    break;
-
-                case R.id.bt_edit_row_vdc:
-                    Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
