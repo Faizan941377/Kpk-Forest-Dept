@@ -16,9 +16,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.kpkforestdeptcdegad.Model.LoginModel;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.VDCResponse;
+import com.example.kpkforestdeptcdegad.SharePrefManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
@@ -34,6 +36,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
     ImageView showImage;
     FloatingActionButton openGalleryBT;
     Bitmap bitmap;
+    EditText employeeNoET;
+    EditText employeeNameET;
     EditText forestDivisionET;
     EditText subDivisionET;
     EditText nameOfVillageET;
@@ -53,6 +57,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_v_d_c);
 
         showImage = findViewById(R.id.iv_showImage);
+        employeeNoET = findViewById(R.id.et_vdc_employeeNo);
+        employeeNameET = findViewById(R.id.et_vdc_employeeName);
         openGalleryBT = findViewById(R.id.bt_openGallery);
         forestDivisionET = findViewById(R.id.et_vdc_forestDivision);
         subDivisionET = findViewById(R.id.et_vdc_subDivision);
@@ -64,6 +70,13 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
         submitBT = findViewById(R.id.bt_vdc_submit);
         JFMCWOET = findViewById(R.id.et_vdc_JFMCWO);
         totalMemberET = findViewById(R.id.et_vdc_totalMember);
+
+        LoginModel loginModel = SharePrefManager.getInstance(this).getUsers();
+        employeeNoET.setText("" + loginModel.getEmployee_no());
+        employeeNameET.setText("" + loginModel.getFull_name());
+
+        employeeNoET.setEnabled(false);
+        employeeNameET.setEnabled(false);
 
         progressDialog = new ProgressDialog(this);
 
@@ -118,6 +131,8 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
 
     private void submitVDC() {
 
+        String employeeNo = employeeNoET.getText().toString();
+        String employeeName = employeeNameET.getText().toString();
         String forestDivision = forestDivisionET.getText().toString();
         String subDivision = subDivisionET.getText().toString();
         String nameOfVillage = nameOfVillageET.getText().toString();
@@ -156,7 +171,7 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
             progressDialog.setCancelable(false);
             progressDialog.setIndeterminate(true);
 
-            Call<VDCResponse> call = RetrofitClient.getInstance().getApi().vdcInsert(forestDivision, subDivision, nameOfVillage, vdcJfmc
+            Call<VDCResponse> call = RetrofitClient.getInstance().getApi().vdcInsert(employeeNo, employeeName, forestDivision, subDivision, nameOfVillage, vdcJfmc
                     , dateOfEstablishment, nameOfPresident, contact, jfmcWO, totalMember,image);
             call.enqueue(new Callback<VDCResponse>() {
                 @Override

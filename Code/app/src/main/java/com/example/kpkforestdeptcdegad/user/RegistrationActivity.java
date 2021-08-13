@@ -3,6 +3,7 @@ package com.example.kpkforestdeptcdegad.user;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -48,6 +49,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     TextInputEditText passwordET;
     LinearLayout registerBT;
 
+    ProgressDialog progressDialog;
+
     private static final int GALLERY_REQUEST = 100;
     ImageView showImage;
     FloatingActionButton openGalleryBT;
@@ -70,6 +73,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         showImage = findViewById(R.id.iv_showImage);
         openGalleryBT = findViewById(R.id.bt_openGallery);
+
+        progressDialog = new ProgressDialog(this);
 
         registerBT.setOnClickListener(this);
         openGalleryBT.setOnClickListener(this);
@@ -164,14 +169,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         String password = passwordET.getText().toString();
         String image = imageToString();
 
+
+        progressDialog.show();
+        progressDialog.setMessage("Please wait it will take few moments");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
+
         Call<RegistrationResponse> call = RetrofitClient.getInstance().getApi().register(firstName, gender, cnic, emp, mobile, division, email, password,image);
         call.enqueue(new Callback<RegistrationResponse>() {
             @Override
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                 RegistrationResponse registrationResponse = response.body();
-                if (response.isSuccessful()) {
-                    if (registrationResponse.getError().equals("")) {
 
+                if (response.isSuccessful()) {
+                    if (registrationResponse.getError().equals("200")) {
+
+                        Intent intent = new Intent(RegistrationActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                         Toast.makeText(RegistrationActivity.this, registrationResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }

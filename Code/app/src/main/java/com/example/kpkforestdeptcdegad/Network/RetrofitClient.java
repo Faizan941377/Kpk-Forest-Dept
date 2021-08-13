@@ -10,8 +10,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public   static String IMAGE_BASE_URL="http://192.168.43.174:82/forestApi/images/";
-    private static String BASE_URL="http://192.168.43.174:82/forestApi/";
+    //database user name = forestdept
+    // password = K8[UlN0XlVDhxJ(6
+//000web host free hosting and domain
+
+    /*public static String IMAGE_BASE_URL = "https://omnivorous-glide.000webhostapp.com/images/";
+    private static String BASE_URL = "https://omnivorous-glide.000webhostapp.com/";*/
+
+    public static String IMAGE_BASE_URL = "http://192.168.43.174:82/forestApi/images/";
+    private static String BASE_URL = "http://192.168.43.174:82/forestApi/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
 
@@ -38,15 +45,15 @@ public class RetrofitClient {
 
     }
 
-    public static synchronized RetrofitClient getInstance(){
+    public static synchronized RetrofitClient getInstance() {
 
-        if(retrofitClient==null){
-            retrofitClient=new RetrofitClient();
+        if (retrofitClient == null) {
+            retrofitClient = new RetrofitClient();
         }
         return retrofitClient;
     }
 
-    public Webservices getApi(){
+    public Webservices getApi() {
         return retrofit.create(Webservices.class);
     }
 

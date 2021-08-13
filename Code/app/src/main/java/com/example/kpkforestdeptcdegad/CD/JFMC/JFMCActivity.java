@@ -10,9 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.example.kpkforestdeptcdegad.Model.LoginModel;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
+import com.example.kpkforestdeptcdegad.SharePrefManager;
 
 import java.security.ProtectionDomain;
 
@@ -22,6 +24,8 @@ import retrofit2.Response;
 
 public class JFMCActivity extends AppCompatActivity implements View.OnClickListener {
 
+    EditText employeeNoET;
+    EditText employeeNameET;
     EditText nameOfDivisionET;
     EditText nameOfSubDivisionET;
     EditText nameOfVillageVDCET;
@@ -38,14 +42,23 @@ public class JFMCActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_g_f_m_c);
 
-        nameOfDivisionET = findViewById(R.id.tv_jfmc_nameOfForestDivision);
-        nameOfSubDivisionET = findViewById(R.id.tv_jfmc_nameOfSubDivisionRange);
-        nameOfVillageVDCET = findViewById(R.id.tv_jfmc_nameOfVillageVDC);
-        nameOfJfmcET = findViewById(R.id.tv_jfmc_nameOfJfmc);
-        dateOfEstablishmentET = findViewById(R.id.tv_jfmc_dateOfEstablishmentRegistration);
-        nameOfPresidentET = findViewById(R.id.tv_jfmc_nameOfPresident);
-        contactET = findViewById(R.id.tv_jfmc_contact);
+
+        employeeNoET = findViewById(R.id.et_jfmc_employeeNo);
+        employeeNameET = findViewById(R.id.et_jfmc_employeeName);
+        nameOfDivisionET = findViewById(R.id.et_jfmc_nameOfForestDivision);
+        nameOfSubDivisionET = findViewById(R.id.et_jfmc_nameOfSubDivisionRange);
+        nameOfVillageVDCET = findViewById(R.id.et_jfmc_nameOfVillageVDC);
+        nameOfJfmcET = findViewById(R.id.et_jfmc_nameOfJfmc);
+        dateOfEstablishmentET = findViewById(R.id.et_jfmc_dateOfEstablishmentRegistration);
+        nameOfPresidentET = findViewById(R.id.et_jfmc_nameOfPresident);
+        contactET = findViewById(R.id.et_jfmc_contact);
         submitBT = findViewById(R.id.bt_jfmc_submit);
+
+        LoginModel loginModel = SharePrefManager.getInstance(this).getUsers();
+        employeeNoET.setText("" + loginModel.getEmployee_no());
+        employeeNameET.setText("" + loginModel.getFull_name());
+        employeeNoET.setEnabled(false);
+        employeeNameET.setEnabled(false);
 
 
         progressDialog = new ProgressDialog(this);
@@ -61,6 +74,9 @@ public class JFMCActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void SubmitJFMC() {
+
+        String employeeNo = employeeNoET.getText().toString();
+        String  employeeName = employeeNameET.getText().toString();
         String forestDivision = nameOfDivisionET.getText().toString();
         String subDivision = nameOfSubDivisionET.getText().toString();
         String nameOfVillage = nameOfVillageVDCET.getText().toString();
@@ -88,7 +104,8 @@ public class JFMCActivity extends AppCompatActivity implements View.OnClickListe
             progressDialog.setMessage("Please wait it will take few moments");
             progressDialog.setCancelable(false);
             progressDialog.setIndeterminate(true);
-            Call<CD_JFMCResponse> call = RetrofitClient.getInstance().getApi().jfmcInsert(forestDivision,subDivision,nameOfVillage,
+
+            Call<CD_JFMCResponse> call = RetrofitClient.getInstance().getApi().jfmcInsert(employeeNo,employeeName,forestDivision,subDivision,nameOfVillage,
                     Jfmc,dateOfEstablishment,nameOfPresident,contact);
             call.enqueue(new Callback<CD_JFMCResponse>() {
                 @Override

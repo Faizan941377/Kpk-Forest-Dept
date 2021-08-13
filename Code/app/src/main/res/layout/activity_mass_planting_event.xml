@@ -56,6 +56,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_Location"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Location / Venue"
@@ -72,6 +73,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_chiefGuest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -89,6 +91,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_dateOfEvent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Date of Event"
@@ -104,6 +107,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_noOfPlantsPlanted"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="No of plants planted"
@@ -119,6 +123,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_noOfPlantsDistributed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="No of Plants Distributed"
@@ -135,7 +140,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_vdc_contact"
+                    android:id="@+id/et_massPlantingEvent_springMoonSoon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Spring | Monsoon"
@@ -151,6 +156,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_massPlantingEvent_totalNoOfPlants"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Total no of plants"
@@ -160,6 +166,7 @@
 
 
             <LinearLayout
+                android:id="@+id/bt_massPlantingEvent_Submit"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_gravity="center"

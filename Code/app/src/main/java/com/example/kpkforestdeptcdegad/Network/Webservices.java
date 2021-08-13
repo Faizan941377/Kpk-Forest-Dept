@@ -9,10 +9,12 @@ import com.example.kpkforestdeptcdegad.Response.FarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
+import com.example.kpkforestdeptcdegad.Response.MassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
 import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterHarvestingSchemeResponse;
@@ -29,6 +31,8 @@ public interface Webservices {
     @FormUrlEncoded
     @POST("cd_vdc.php")
     Call<VDCResponse> vdcInsert(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
             @Field("name_of_forest_divsion") String name_of_forest_divsion,
             @Field("name_of_sub_division_range") String name_of_sub_division_range,
             @Field("name_of_village") String name_of_village,
@@ -47,6 +51,8 @@ public interface Webservices {
     @FormUrlEncoded
     @POST("cd_jfmc.php")
     Call<CD_JFMCResponse> jfmcInsert(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
             @Field("name_of_forest_division") String name_of_forest_division,
             @Field("name_of_sub_division_range") String name_of_sub_division_range,
             @Field("name_of_village_vdc") String name_of_village_vdc,
@@ -148,4 +154,19 @@ public interface Webservices {
 
     @GET("fetchCDWaterSourceDevelopmentScheme.php")
     Call<FetchWaterSourceDevelopSchemeResponse> fetchWaterSourceDevelopSchemeResponse();
+
+    @FormUrlEncoded
+    @POST("extension_Mass_Planting_Event.php")
+    Call<MassPlantingEventResponse> massPlantingEventResponse(
+            @Field("location_venu") String location_venu,
+            @Field("chief_guest") String chief_guest,
+            @Field("date_of_event") String date_of_event,
+            @Field("no_of_plants_planted") String no_of_plants_planted,
+            @Field("no_of_plants_distributed") String no_of_plants_distributed,
+            @Field("spring_moon_soon") String spring_moon_soon,
+            @Field("total_no_of_plants") String total_no_of_plants
+    );
+
+    @GET("fetchExtensionMassPlantingEvent.php")
+    Call<FetchMassPlantingEventResponse> fetchMassPlantingEventResponse();
 }
