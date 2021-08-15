@@ -15,8 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CD.WaterSourceDevelopmentScheme.ViewWaterSourceDevelopmentSchemeActivity"
+        <activity android:name=".Extension.ExtensionMaterialPrepared.ViewExtensionMaterialPreparedActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".Extension.MassPlantingEvent.ViewMassPlantingEventActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Extension.CelebrationOfEnvironmentalPlanting.ViewCelebrationOfEnvironmentalPlantingActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CD.WaterSourceDevelopmentScheme.ViewWaterSourceDevelopmentSchemeActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.WaterSourceDevelopmentScheme.WaterSoruceDevelopmentSchemeActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -67,10 +76,10 @@
             android:name=".CD.VDC.VDC_Activity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".Extension.ExtensionMaterialPreparedActivity"
+            android:name=".Extension.ExtensionMaterialPrepared.ExtensionMaterialPreparedActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".Extension.CelebrationOfEnvironmentalPlantingActivity"
+            android:name=".Extension.CelebrationOfEnvironmentalPlanting.CelebrationOfEnvironmentalPlantingActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".Extension.ExtensionActivity"
@@ -88,7 +97,7 @@
             android:name=".HR.HRActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".Extension.MassPlantingEventActivity"
+            android:name=".Extension.MassPlantingEvent.MassPlantingEventActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.Enclosure.EnclosureActivity"

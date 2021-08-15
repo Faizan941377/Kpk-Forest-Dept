@@ -1,4 +1,4 @@
-package com.example.kpkforestdeptcdegad.Extension;
+package com.example.kpkforestdeptcdegad.Extension.MassPlantingEvent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.kpkforestdeptcdegad.Model.LoginModel;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.MassPlantingEventResponse;
+import com.example.kpkforestdeptcdegad.SharePrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +21,8 @@ import retrofit2.Response;
 
 public class MassPlantingEventActivity extends AppCompatActivity implements View.OnClickListener {
 
+    EditText employeeNoET;
+    EditText employeeNameET;
     EditText locationET;
     EditText chiefGustET;
     EditText dateOfEventET;
@@ -36,6 +40,8 @@ public class MassPlantingEventActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_mass_planting_event);
 
 
+        employeeNoET = findViewById(R.id.et_massPlantingEvent_employeeNo);
+        employeeNameET = findViewById(R.id.et_massPlantingEvent_EmployeeName);
         locationET = findViewById(R.id.et_massPlantingEvent_Location);
         chiefGustET = findViewById(R.id.et_massPlantingEvent_chiefGuest);
         dateOfEventET = findViewById(R.id.et_massPlantingEvent_dateOfEvent);
@@ -44,6 +50,14 @@ public class MassPlantingEventActivity extends AppCompatActivity implements View
         springMoonSoonET = findViewById(R.id.et_massPlantingEvent_springMoonSoon);
         totalNoOfPlantsET = findViewById(R.id.et_massPlantingEvent_totalNoOfPlants);
         submitET = findViewById(R.id.bt_massPlantingEvent_Submit);
+
+
+
+        LoginModel loginModel = SharePrefManager.getInstance(this).getUsers();
+        employeeNoET.setText("" + loginModel.getEmployee_no());
+        employeeNameET.setText("" + loginModel.getFull_name());
+        employeeNoET.setEnabled(false);
+        employeeNameET.setEnabled(false);
 
         progressDialog = new ProgressDialog(this);
         submitET.setOnClickListener(this);
@@ -60,6 +74,8 @@ public class MassPlantingEventActivity extends AppCompatActivity implements View
 
     private void submitMassPlantingEvent() {
 
+        String employeeNo = employeeNoET.getText().toString();
+        String employeeName = employeeNameET.getText().toString();
         String location = locationET.getText().toString();
         String chiefGust = chiefGustET.getText().toString();
         String dateOfEvent = dateOfEventET.getText().toString();
@@ -90,7 +106,7 @@ public class MassPlantingEventActivity extends AppCompatActivity implements View
             progressDialog.setCancelable(false);
             progressDialog.setIndeterminate(true);
 
-            Call<MassPlantingEventResponse> call = RetrofitClient.getInstance().getApi().massPlantingEventResponse(location, chiefGust,
+            Call<MassPlantingEventResponse> call = RetrofitClient.getInstance().getApi().massPlantingEventResponse(employeeNo,employeeName,location, chiefGust,
                     dateOfEvent, noOfPlantsPlanted, noOfPlantsDistributed, springMoonSoon, totalNoOfPlantsPlanted);
             call.enqueue(new Callback<MassPlantingEventResponse>() {
                 @Override
@@ -99,9 +115,9 @@ public class MassPlantingEventActivity extends AppCompatActivity implements View
                     if (response.isSuccessful()) {
                         progressDialog.dismiss();
                         editFieldClear();
-                        if (massPlantingEventResponse.equals("200")) {
+                        if (massPlantingEventResponse.getError().equals("200")) {
                             Toast.makeText(MassPlantingEventActivity.this, massPlantingEventResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        } else if (massPlantingEventResponse.equals("400")) {
+                        } else if (massPlantingEventResponse.getError().equals("400")) {
                             Toast.makeText(MassPlantingEventActivity.this, massPlantingEventResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }

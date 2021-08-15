@@ -4,8 +4,10 @@ package com.example.kpkforestdeptcdegad.Network;
 import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
 import com.example.kpkforestdeptcdegad.Model.FetchWaterHarvestingSchemeDataModel;
 import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
+import com.example.kpkforestdeptcdegad.Response.CelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.EnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FarmForestryResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchCelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
@@ -158,6 +160,8 @@ public interface Webservices {
     @FormUrlEncoded
     @POST("extension_Mass_Planting_Event.php")
     Call<MassPlantingEventResponse> massPlantingEventResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
             @Field("location_venu") String location_venu,
             @Field("chief_guest") String chief_guest,
             @Field("date_of_event") String date_of_event,
@@ -169,4 +173,20 @@ public interface Webservices {
 
     @GET("fetchExtensionMassPlantingEvent.php")
     Call<FetchMassPlantingEventResponse> fetchMassPlantingEventResponse();
+
+    @FormUrlEncoded
+    @POST("extension_Celebration_Environmental_Planting_Events.php")
+    Call<CelebrationOfEnvironmentalPlantingEventResponse> celebrationOfEnvironmentalPlantingEventResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("location_of_event_name_of_institute") String location_of_event_name_of_institute,
+            @Field("chief_guest") String chief_guest,
+            @Field("environmental_planting_type") String environmental_planting_type,
+            @Field("environmental_day_planting_event") String environmental_day_planting_event,
+            @Field("date_of_event") String date_of_event,
+            @Field("no_of_planted") String no_of_planted
+    );
+
+    @GET("fetchExtensionCelebrationEnvironmentalPlantingEvent.php")
+    Call<FetchCelebrationOfEnvironmentalPlantingEventResponse> fetchCelebrationOfEnvironmentalPlantingEvent();
 }

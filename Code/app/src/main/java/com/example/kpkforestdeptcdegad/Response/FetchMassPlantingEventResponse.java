@@ -25,6 +25,12 @@ public class FetchMassPlantingEventResponse {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("employee_no")
+    @Expose
+    private String employeeNo;
+    @SerializedName("employee_name")
+    @Expose
+    private String employeeName;
     @SerializedName("location_venu")
     @Expose
     private String locationVenu;
@@ -56,6 +62,22 @@ public class FetchMassPlantingEventResponse {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEmployeeNo() {
+        return employeeNo;
+    }
+
+    public void setEmployeeNo(String employeeNo) {
+        this.employeeNo = employeeNo;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     public String getLocationVenu() {
@@ -121,5 +143,4 @@ public class FetchMassPlantingEventResponse {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
-
 }
