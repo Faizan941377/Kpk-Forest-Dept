@@ -1,4 +1,4 @@
-package com.example.kpkforestdeptcdegad.GAD;
+package com.example.kpkforestdeptcdegad.GAD.WemonOrganization;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.kpkforestdeptcdegad.R;
 
-public class WemonOrganizationActivity extends AppCompatActivity {
+public class ViewWomenOrganizationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wemon_organization);
+        setContentView(R.layout.activity_view_women_organization);
     }
 }

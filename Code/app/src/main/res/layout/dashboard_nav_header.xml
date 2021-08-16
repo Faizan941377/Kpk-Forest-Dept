@@ -14,11 +14,20 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_launcher_background"
+            android:background="@drawable/ico_image_placeholder"
             android:layout_marginBottom="36dp"
             android:layout_marginLeft="8dp"
             app:civ_border_color="@color/colorWhite"
             app:civ_border_width="2dp"/>
+
+        <ProgressBar
+            android:id="@+id/pb_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="35dp"
+            android:indeterminateTint="@android:color/white"
+            android:layout_marginBottom="64dp"/>
 
 
         <LinearLayout

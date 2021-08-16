@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".GAD.WemonOrganizationActivity">
+    tools:context=".GAD.WemonOrganization.WomenOrganizationActivity">
 
     <RelativeLayout
         android:id="@+id/action_bar"
@@ -106,6 +106,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_nameOfVillageVdc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of village | VDC" />
@@ -121,6 +122,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_nameOfWO"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of WO"
@@ -138,6 +140,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_DateYearOfEstablishment"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Date / Year of Establishment"
@@ -154,6 +157,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_nameOfPresident"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Name of President"
@@ -170,7 +174,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_vdc_contact"
+                        android:id="@+id/et_womenOrganization_majorActivities"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Major Activities"
@@ -187,10 +191,10 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_vdc_contact"
+                        android:id="@+id/et_womenOrganization_totalNoOfMembers"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Total no Members (Optional)"
+                        android:hint="Total no of Members (Optional)"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -205,6 +209,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_contact"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Contact (Optional)"
@@ -213,6 +218,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_womenOrganization_remarks"
                     style="@style/EditTextOutline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -230,6 +236,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:id="@+id/bt_womenOrganization_submit"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_gravity="center"

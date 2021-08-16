@@ -15,8 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Extension.ExtensionMaterialPrepared.ViewExtensionMaterialPreparedActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+        <activity android:name=".GAD.YouthWemenNursery.ViewYouthWomenNurseryActivity"></activity>
+        <activity android:name=".GAD.OtherActivity.ViewOtherActivity" />
+        <activity android:name=".GAD.GADMassPlantingEvent.ViewGadMassPlantingEventActivity" />
+        <activity android:name=".GAD.FarmAgroForestry.ViewFarmAgroForestryActivity" />
+        <activity android:name=".GAD.WemonOrganization.ViewWomenOrganizationActivity" />
+        <activity
+            android:name=".Extension.ExtensionMaterialPrepared.ViewExtensionMaterialPreparedActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".Extension.MassPlantingEvent.ViewMassPlantingEventActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -40,19 +46,19 @@
         </receiver>
 
         <activity
-            android:name=".GAD.OtherActivityMainActivity"
+            android:name=".GAD.OtherActivity.OtherActivityMainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".GAD.FarmAgroForestryMainActivity"
+            android:name=".GAD.FarmAgroForestry.FarmAgroForestryMainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".GAD.GADMassPlantingEventMainActivity"
+            android:name=".GAD.GADMassPlantingEvent.GADMassPlantingEventMainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".GAD.YouthWemonNurseryActivity"
+            android:name=".GAD.YouthWemenNursery.YouthWemonNurseryActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".GAD.WemonOrganizationActivity"
+            android:name=".GAD.WemonOrganization.WomenOrganizationActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".CD.WaterHarvestingScheme.View_WaterHarvestingScheme_DataActivity"

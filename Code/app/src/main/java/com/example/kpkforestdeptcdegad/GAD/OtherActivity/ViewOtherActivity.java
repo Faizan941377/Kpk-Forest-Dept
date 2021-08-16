@@ -1,4 +1,4 @@
-package com.example.kpkforestdeptcdegad.GAD;
+package com.example.kpkforestdeptcdegad.GAD.OtherActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.kpkforestdeptcdegad.R;
 
-public class GADMassPlantingEventMainActivity extends AppCompatActivity {
+public class ViewOtherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_g_a_d_mass_planting_event_main);
+        setContentView(R.layout.activity_view_other);
     }
 }

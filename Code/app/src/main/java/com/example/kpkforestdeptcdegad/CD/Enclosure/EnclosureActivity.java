@@ -81,6 +81,7 @@ public class EnclosureActivity extends AppCompatActivity implements View.OnClick
     private void submitEnclosure() {
 
         String employeeNo = employeeET.getText().toString();
+        String employeeName = employeeNameET.getText().toString();
         String forestDivision = forestDivisionET.getText().toString();
         String entryDate = dateET.getText().toString();
         String targetAsPc1Enclosure = targetAsPc1EnclosureET.getText().toString();
@@ -117,7 +118,7 @@ public class EnclosureActivity extends AppCompatActivity implements View.OnClick
             progressDialog.setCancelable(false);
             progressDialog.setIndeterminate(true);
 
-            Call<EnclosureResponse> call = RetrofitClient.getInstance().getApi().enclosure(employeeNo,forestDivision, entryDate, targetAsPc1Enclosure, siteForEnclosureAchieved
+            Call<EnclosureResponse> call = RetrofitClient.getInstance().getApi().enclosure(employeeNo,employeeName,forestDivision, entryDate, targetAsPc1Enclosure, siteForEnclosureAchieved
                     , vdcEstablishment, NigehbansHired, paymentUpTo, balanceTarget, remarks);
             call.enqueue(new Callback<EnclosureResponse>() {
                 @Override
