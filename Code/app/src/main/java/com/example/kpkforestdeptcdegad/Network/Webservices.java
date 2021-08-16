@@ -2,13 +2,16 @@ package com.example.kpkforestdeptcdegad.Network;
 
 
 import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
+import com.example.kpkforestdeptcdegad.Model.FetchExtensionMaterialPreparedDataModel;
 import com.example.kpkforestdeptcdegad.Model.FetchWaterHarvestingSchemeDataModel;
 import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
 import com.example.kpkforestdeptcdegad.Response.CelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.EnclosureResponse;
+import com.example.kpkforestdeptcdegad.Response.ExtensionMaterialPreparedResponse;
 import com.example.kpkforestdeptcdegad.Response.FarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchCelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchExtensionMaterialPreparedResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchMassPlantingEventResponse;
@@ -189,4 +192,23 @@ public interface Webservices {
 
     @GET("fetchExtensionCelebrationEnvironmentalPlantingEvent.php")
     Call<FetchCelebrationOfEnvironmentalPlantingEventResponse> fetchCelebrationOfEnvironmentalPlantingEvent();
+
+
+    @FormUrlEncoded
+    @POST("extension_Material_Prepared.php")
+    Call<ExtensionMaterialPreparedResponse> extensionMaterialPreparedResponse(
+            @Field("Souvenirs_Shields_No") String Souvenirs_Shields_No,
+            @Field("no_of_panaflex") String no_of_panaflex,
+            @Field("square_feet") String square_feet,
+            @Field("month_of_preparation") String month_of_preparation,
+            @Field("no_of_diaries") String no_of_diaries,
+            @Field("no_of_calenders") String no_of_calenders,
+            @Field("banners") String banners,
+            @Field("action_plan") String action_plan,
+            @Field("key_chain") String key_chain,
+            @Field("no_of_miscellaneous_extension_material") String no_of_miscellaneous_extension_material
+    );
+
+    @GET("fetchExtensionMaterialPrepared.php")
+    Call<FetchExtensionMaterialPreparedResponse> fetchExtensionMaterialPreparedResponse();
 }

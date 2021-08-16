@@ -58,10 +58,11 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_souvenirsShieldNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Souvenirs | Shields No"
-                        android:inputType="text"/>
+                        android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,9 +75,10 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_noOfPanaflex"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Panaflex No of "
+                        android:hint="No of Panaflex"
                         android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -90,6 +92,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_squareFeet"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Square Feet"
@@ -107,6 +110,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_monthOfPrepared"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Month of Preparation"
@@ -124,6 +128,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_diariesNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Diaries No"
@@ -141,6 +146,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_calenderNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Calenders no"
@@ -158,6 +164,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_banners"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Banners"
@@ -175,6 +182,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_actionPlan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Action Plan"
@@ -192,6 +200,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_keyChain"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Key Chain"
@@ -207,6 +216,7 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ExtensionMaterialPrepared_noOfMiscellaneousExtensionMaterials"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="No of Miscellaneous Extension Material"
@@ -215,6 +225,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:id="@+id/bt_ExtensionMaterialPrepared_submit"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
