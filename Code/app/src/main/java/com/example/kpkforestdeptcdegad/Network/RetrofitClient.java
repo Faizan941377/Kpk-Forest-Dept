@@ -14,7 +14,7 @@ public class RetrofitClient {
     // password = K8[UlN0XlVDhxJ(6
 //000web host free hosting and domain
 
-    /*public static String IMAGE_BASE_URL = "https://omnivorous-glide.000webhostapp.com/images/";
+   /* public static String IMAGE_BASE_URL = "https://omnivorous-glide.000webhostapp.com/images/";
     private static String BASE_URL = "https://omnivorous-glide.000webhostapp.com/";*/
 
     public static String IMAGE_BASE_URL = "http://192.168.43.174:82/forestApi/images/";

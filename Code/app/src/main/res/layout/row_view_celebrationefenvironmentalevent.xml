@@ -88,7 +88,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_rowViewExtensionMassPlantingEvent_employeeName"
+                        android:id="@+id/tv_rowViewCelebrationOfEnvironmental_employeeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -114,7 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:text="Location / Venue"
+                        android:text="Location / Institute"
                         android:textColor="@color/colorBlack"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -149,7 +149,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_rowViewExtensionMassPlantingEvent_location"
+                        android:id="@+id/tv_rowViewCelebrationOfEnvironmental_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -166,7 +166,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_rowViewExtensionMassPlantingEvent_chiefGuest"
+                        android:id="@+id/tv_rowViewCelebrationOfEnvironmental_chiefGuest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -184,6 +184,84 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Environmental Planting Type"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Environmental Day Planting Event"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_rowViewCelebrationOfEnvironmental_environmentalPlantingType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="TextView"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_rowViewCelebrationOfEnvironmental_environmentalDayPlantingEvent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -234,7 +312,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewExtensionMassPlantingEvent_dateOfEvent"
+                            android:id="@+id/tv_rowViewCelebrationOfEnvironmental_dateOfEvent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -251,134 +329,9 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/tv_rowViewExtensionMassPlantingEvent_NoOfPlantsPlanted"
+                            android:id="@+id/tv_rowViewCelebrationOfEnvironmental_noOfPlantsPlanted"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="21dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="No of Plants Distributed"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Spring / Moon Soon"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tv_rowViewExtensionMassPlantingEvent_NoOfPlantsDistributed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="TextView"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tv_rowViewExtensionMassPlantingEvent_springMoonSoon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="21dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="Total no of Plants"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tv_rowViewExtensionMassPlantingEvent_totalNoOfPlants"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
                             android:text="TextView"
                             android:textColor="@color/colorBlack"
                             android:textSize="16dp" />
@@ -402,7 +355,7 @@
                 android:textColor="@color/colorWhite" />
 
             <TextView
-                android:id="@+id/tv_rowViewWaterHarvestingScheme_timeDate"
+                android:id="@+id/tv_rowViewCelebrationOfEnvironmental_timeDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00pm"
