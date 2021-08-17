@@ -53,6 +53,40 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_employeeNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee No"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_employeeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee Name"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_nameOfDivision"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Division"
@@ -68,6 +102,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_ChiefGuest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -84,6 +119,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_nameOfEvent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Event"
@@ -99,6 +135,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_dateOfEvent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Date of Event"
@@ -114,6 +151,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_GadMassPlantingEvent_location"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Location"
@@ -130,7 +168,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_vdc_contact"
+                    android:id="@+id/et_GadMassPlantingEvent_nameOfInstitute"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Institute"
@@ -147,7 +185,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_vdc_contact"
+                    android:id="@+id/et_GadMassPlantingEvent_noOfPlantsPlanted"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Number of Plants Planted"
@@ -164,7 +202,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_vdc_contact"
+                    android:id="@+id/et_GadMassPlantingEvent_noOfPlantsDistributed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Number of Plants Distributed"
@@ -182,7 +220,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_vdc_contact"
+                    android:id="@+id/et_GadMassPlantingEvent_noOfPlantsUtilized"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Number of Plants Utilized"
@@ -192,6 +230,7 @@
 
 
             <LinearLayout
+                android:id="@+id/bt_GadMassPlantingEvent_submit"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_gravity="center"

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Form Agro Forestry"
+            android:text="Farm Agro Forestry"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -53,6 +53,40 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_employeeNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee No"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_employeeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee Name"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextOutline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorBlack"
+                app:hintTextColor="@color/colorBlack">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_gadAdd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="GAD Add"
@@ -68,6 +102,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_otherActivities"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Other Activities"
@@ -83,6 +118,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_nameOfWomenOrganization"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Women Organization"
@@ -98,6 +134,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_nameOfMajorActivities"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Major Activities"
@@ -113,6 +150,7 @@
                 app:hintTextColor="@color/colorBlack">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_farmAgroForestry_nameOfVillage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name of Village"
@@ -121,6 +159,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
+                android:id="@+id/bt_farmAgroForestry_submit"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_gravity="center"

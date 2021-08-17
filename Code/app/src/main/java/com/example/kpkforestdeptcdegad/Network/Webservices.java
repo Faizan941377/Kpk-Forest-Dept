@@ -13,12 +13,15 @@ import com.example.kpkforestdeptcdegad.Response.FetchCelebrationOfEnvironmentalP
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchExtensionMaterialPreparedResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchGadMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWomenOrganizationResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchYouthWomenNurseryResponse;
+import com.example.kpkforestdeptcdegad.Response.GadMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
 import com.example.kpkforestdeptcdegad.Response.MassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
@@ -26,6 +29,7 @@ import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterSourceDevelopmentSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.WomenOrganizationResponse;
+import com.example.kpkforestdeptcdegad.Response.YouthWomenNurseryResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -234,4 +238,42 @@ public interface Webservices {
 
     @GET("fetchGADWomenOrganization.php")
     Call<FetchWomenOrganizationResponse> fetchWomenOrganizationResponse();
+
+
+    @FormUrlEncoded
+    @POST("GADYouth_women_nursery.php")
+    Call<YouthWomenNurseryResponse> youthWomenNurseryResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("name_of_division") String name_of_division,
+            @Field("name_of_sub_division_range") String name_of_sub_division_range,
+            @Field("vdc_wo") String vdc_wo,
+            @Field("name_of_nursery_owner") String name_of_nursery_owner,
+            @Field("location_village_name") String location_village_name,
+            @Field("limits") String limits
+    );
+
+    @GET("fetchYouthWomenNursery.php")
+    Call<FetchYouthWomenNurseryResponse> fetchYouthWomenNurseryResponse();
+
+
+    @FormUrlEncoded
+    @POST("GADMassPlantingEvent.php")
+    Call<GadMassPlantingEventResponse> gadMassPlantingEventResponse(
+
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("name_of_division") String name_of_division,
+            @Field("chief_guest") String chief_guest,
+            @Field("name_of_event") String name_of_event,
+            @Field("date_of_event") String date_of_event,
+            @Field("location") String location,
+            @Field("name_of_institute") String name_of_institute,
+            @Field("no_of_plants_planted") String no_of_plants_planted,
+            @Field("no_of_plants_distributed") String no_of_plants_distributed,
+            @Field("no_of_plants_utilized") String no_of_plants_utilized
+    );
+
+    @GET("fetchGadMassPlantingEvent.php")
+    Call<FetchGadMassPlantingEventResponse> fetchGadMassPlantingEventResponse();
 }
