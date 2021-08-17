@@ -191,7 +191,11 @@ public class VDC_Activity extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onFailure(Call<VDCResponse> call, Throwable t) {
-                    Toast.makeText(VDC_Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    try {
+                        Toast.makeText(VDC_Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             });
         }

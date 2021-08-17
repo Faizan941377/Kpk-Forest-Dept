@@ -18,12 +18,14 @@ import com.example.kpkforestdeptcdegad.Response.FetchMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchWomenOrganizationResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
 import com.example.kpkforestdeptcdegad.Response.MassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
 import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterSourceDevelopmentSchemeResponse;
+import com.example.kpkforestdeptcdegad.Response.WomenOrganizationResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -212,4 +214,24 @@ public interface Webservices {
 
     @GET("fetchExtensionMaterialPrepared.php")
     Call<FetchExtensionMaterialPreparedResponse> fetchExtensionMaterialPreparedResponse();
+
+
+    @FormUrlEncoded
+    @POST("GADWomenOrganization.php")
+    Call<WomenOrganizationResponse> womenOrganizationResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("name_of_village_vdc") String name_of_village_vdc,
+            @Field("name_of_wo") String name_of_wo,
+            @Field("date_year_of_establishment") String date_year_of_establishment,
+            @Field("name_of_president") String name_of_president,
+            @Field("mojor_activities") String mojor_activities,
+            @Field("total_member") String total_member,
+            @Field("contact") String contact,
+            @Field("remarks") String remarks,
+            @Field("image") String image
+    );
+
+    @GET("fetchGADWomenOrganization.php")
+    Call<FetchWomenOrganizationResponse> fetchWomenOrganizationResponse();
 }

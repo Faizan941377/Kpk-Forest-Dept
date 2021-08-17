@@ -82,6 +82,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/bt_womenOrganization_openGallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -97,6 +98,38 @@
                 android:layout_marginTop="21dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/EditTextOutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/colorBlack"
+                    app:hintTextColor="@color/colorBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_employeeNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Employee No" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/EditTextOutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/colorBlack"
+                    app:hintTextColor="@color/colorBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_womenOrganization_employeeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Employee Name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextOutline"
@@ -217,8 +250,8 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_womenOrganization_remarks"
                     style="@style/EditTextOutline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -227,13 +260,15 @@
                     app:hintTextColor="@color/colorBlack">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_vdc_contact"
+                        android:id="@+id/et_womenOrganization_remarks"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Remarks"
-                        android:inputType="text" />
+                        android:inputType="phone" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/bt_womenOrganization_submit"

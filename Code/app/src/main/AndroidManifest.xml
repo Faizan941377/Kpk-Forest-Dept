@@ -15,11 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KPKForestDeptCDEGAD"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GAD.YouthWemenNursery.ViewYouthWomenNurseryActivity"></activity>
-        <activity android:name=".GAD.OtherActivity.ViewOtherActivity" />
-        <activity android:name=".GAD.GADMassPlantingEvent.ViewGadMassPlantingEventActivity" />
-        <activity android:name=".GAD.FarmAgroForestry.ViewFarmAgroForestryActivity" />
-        <activity android:name=".GAD.WemonOrganization.ViewWomenOrganizationActivity" />
+        <activity
+            android:name=".GAD.YouthWemenNursery.ViewYouthWomenNurseryActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.OtherActivity.ViewOtherActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.GADMassPlantingEvent.ViewGadMassPlantingEventActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.FarmAgroForestry.ViewFarmAgroForestryActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".GAD.WemonOrganization.ViewWomenOrganizationActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".Extension.ExtensionMaterialPrepared.ViewExtensionMaterialPreparedActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

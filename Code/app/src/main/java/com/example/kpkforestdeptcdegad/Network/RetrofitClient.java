@@ -14,11 +14,11 @@ public class RetrofitClient {
     // password = ?Y09F(A@ATykzDjm
 //000web host free hosting and domain
 
-    public static String IMAGE_BASE_URL = "https://omnivorous-glide.000webhostapp.com/images/";
-    private static String BASE_URL = "https://omnivorous-glide.000webhostapp.com/";
+   /* public static String IMAGE_BASE_URL = "https://omnivorous-glide.000webhostapp.com/images/";
+    private static String BASE_URL = "https://omnivorous-glide.000webhostapp.com/";*/
 
-    /*public static String IMAGE_BASE_URL = "http://192.168.43.174:82/forestApi/images/";
-    private static String BASE_URL = "http://192.168.43.174:82/forestApi/";*/
+    public static String IMAGE_BASE_URL = "http://192.168.43.174:82/forestApi/images/";
+    private static String BASE_URL = "http://192.168.43.174:82/forestApi/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
 
