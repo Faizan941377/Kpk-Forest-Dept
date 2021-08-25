@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,16 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchCelebrationOfEnvironmentalPlantingEventDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class CelebrationOfEnvironmentalPlantingEventAdapter extends RecyclerView.Adapter<CelebrationOfEnvironmentalPlantingEventAdapter.CelebrationOfEnvironmentalPlantingEventVH> {
+public class CelebrationOfEnvironmentalPlantingEventAdapter extends RecyclerView.Adapter<CelebrationOfEnvironmentalPlantingEventAdapter.CelebrationOfEnvironmentalPlantingEventVH> implements Filterable {
 
-    Context mContext;
-    List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> fetchCelebrationOfEnvironmentalPlantingEventDataModelList;
+    private Context mContext;
+    private List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> fetchCelebrationOfEnvironmentalPlantingEventDataModelList;
+    private List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> detailCelebrationOfEnvironmentalPlantingEventDataModelList;
 
     public CelebrationOfEnvironmentalPlantingEventAdapter(Context mContext, List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> fetchCelebrationOfEnvironmentalPlantingEventDataModelList) {
         this.mContext = mContext;
         this.fetchCelebrationOfEnvironmentalPlantingEventDataModelList = fetchCelebrationOfEnvironmentalPlantingEventDataModelList;
+        detailCelebrationOfEnvironmentalPlantingEventDataModelList = new ArrayList<>();
+        detailCelebrationOfEnvironmentalPlantingEventDataModelList.addAll(fetchCelebrationOfEnvironmentalPlantingEventDataModelList);
     }
 
     @NonNull
@@ -53,6 +60,38 @@ public class CelebrationOfEnvironmentalPlantingEventAdapter extends RecyclerView
     public int getItemCount() {
         return fetchCelebrationOfEnvironmentalPlantingEventDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailCelebrationOfEnvironmentalPlantingEventDataModelList);
+            }else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchCelebrationOfEnvironmentalPlantingEventDataModel dataItem:detailCelebrationOfEnvironmentalPlantingEventDataModelList){
+                    if (dataItem.getLocation_of_event_name_of_institute().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchCelebrationOfEnvironmentalPlantingEventDataModelList.clear();
+            fetchCelebrationOfEnvironmentalPlantingEventDataModelList.addAll((Collection<? extends FetchCelebrationOfEnvironmentalPlantingEventDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class CelebrationOfEnvironmentalPlantingEventVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

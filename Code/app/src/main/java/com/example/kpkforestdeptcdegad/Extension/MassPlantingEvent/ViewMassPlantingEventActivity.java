@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.Adapter.WaterHarvestingScheme_Adapter;
@@ -29,6 +32,8 @@ public class ViewMassPlantingEventActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     List<FetchMassPlantingEventDataModel> fetchMassPlantingEventDataModelList;
     ProgressDialog progressDialog;
+    EditText searchET;
+    MassPlantingEventAdapter massPlantingEventAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class ViewMassPlantingEventActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         massPlantingEventRV = findViewById(R.id.rv_massPlantingEvent);
+        searchET = findViewById(R.id.et_ViewMassPlantingEvent_search);
+
         progressDialog = new ProgressDialog(this);
 
 
@@ -47,6 +54,23 @@ public class ViewMassPlantingEventActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                massPlantingEventAdapter.getFilter().filter(s);
             }
         });
     }
@@ -70,6 +94,10 @@ public class ViewMassPlantingEventActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     fetchMassPlantingEventDataModelList = response.body().getFetchMassPlantingEventDataModelList();
                     massPlantingEventRV.setAdapter(new MassPlantingEventAdapter(fetchMassPlantingEventDataModelList, getApplicationContext()));
+                    massPlantingEventAdapter = new MassPlantingEventAdapter(fetchMassPlantingEventDataModelList,getApplicationContext());
+                    massPlantingEventRV.setAdapter(massPlantingEventAdapter);
+                }else {
+                    Toast.makeText(ViewMassPlantingEventActivity.this, "Please check you internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

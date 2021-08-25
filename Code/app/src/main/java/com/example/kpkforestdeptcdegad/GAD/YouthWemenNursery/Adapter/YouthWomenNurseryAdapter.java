@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,16 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchYouthWomenNurseryDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class YouthWomenNurseryAdapter extends RecyclerView.Adapter<YouthWomenNurseryAdapter.YouthNurseryAdapterVH> {
+public class YouthWomenNurseryAdapter extends RecyclerView.Adapter<YouthWomenNurseryAdapter.YouthNurseryAdapterVH> implements Filterable {
 
     Context mContext;
-    List<FetchYouthWomenNurseryDataModel> fetchYouthWomenNurseryDataModelList;
+    private List<FetchYouthWomenNurseryDataModel> fetchYouthWomenNurseryDataModelList;
+    private List<FetchYouthWomenNurseryDataModel> detailYouthWomenNurseryDataModelList;
 
     public YouthWomenNurseryAdapter(Context mContext, List<FetchYouthWomenNurseryDataModel> fetchYouthWomenNurseryDataModelList) {
         this.mContext = mContext;
         this.fetchYouthWomenNurseryDataModelList = fetchYouthWomenNurseryDataModelList;
+        detailYouthWomenNurseryDataModelList = new ArrayList<>();
+        detailYouthWomenNurseryDataModelList.addAll(fetchYouthWomenNurseryDataModelList);
     }
 
     @NonNull
@@ -53,6 +60,39 @@ public class YouthWomenNurseryAdapter extends RecyclerView.Adapter<YouthWomenNur
     public int getItemCount() {
         return fetchYouthWomenNurseryDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchYouthWomenNurseryDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(detailYouthWomenNurseryDataModelList);
+            } else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchYouthWomenNurseryDataModel dataItem : detailYouthWomenNurseryDataModelList) {
+                    if (dataItem.getName_of_division().toLowerCase().contains(filter)) {
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchYouthWomenNurseryDataModelList.clear();
+            fetchYouthWomenNurseryDataModelList.addAll((Collection<? extends FetchYouthWomenNurseryDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class YouthNurseryAdapterVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

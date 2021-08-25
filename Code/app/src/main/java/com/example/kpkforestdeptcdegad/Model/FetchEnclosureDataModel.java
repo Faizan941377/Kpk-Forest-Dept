@@ -1,5 +1,8 @@
 package com.example.kpkforestdeptcdegad.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FetchEnclosureDataModel {
 
     String employee_No;

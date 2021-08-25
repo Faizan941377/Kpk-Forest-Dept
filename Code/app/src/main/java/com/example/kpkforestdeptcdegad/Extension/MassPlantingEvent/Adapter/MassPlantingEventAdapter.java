@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,17 +19,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchMassPlantingEventDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.zip.Inflater;
 
-public class MassPlantingEventAdapter extends RecyclerView.Adapter<MassPlantingEventAdapter.MassPlantingViewVH> {
+public class MassPlantingEventAdapter extends RecyclerView.Adapter<MassPlantingEventAdapter.MassPlantingViewVH> implements Filterable {
 
-    List<FetchMassPlantingEventDataModel> fetchMassPlantingEventDataModelList;
+    private List<FetchMassPlantingEventDataModel> fetchMassPlantingEventDataModelList;
+    private List<FetchMassPlantingEventDataModel> detailMassPlantingEventDataModelList;
     Context mContext;
 
     public MassPlantingEventAdapter(List<FetchMassPlantingEventDataModel> fetchMassPlantingEventDataModelList, Context mContext) {
         this.fetchMassPlantingEventDataModelList = fetchMassPlantingEventDataModelList;
         this.mContext = mContext;
+        detailMassPlantingEventDataModelList = new ArrayList<>();
+        detailMassPlantingEventDataModelList.addAll(fetchMassPlantingEventDataModelList);
     }
 
     @NonNull
@@ -54,6 +61,38 @@ public class MassPlantingEventAdapter extends RecyclerView.Adapter<MassPlantingE
     public int getItemCount() {
         return fetchMassPlantingEventDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchMassPlantingEventDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailMassPlantingEventDataModelList);
+            }else {
+                String  filter = constraint.toString().toLowerCase().trim();
+                for (FetchMassPlantingEventDataModel dataItem:detailMassPlantingEventDataModelList){
+                    if (dataItem.getLocation_venu().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchMassPlantingEventDataModelList.clear();
+            fetchMassPlantingEventDataModelList.addAll((Collection<? extends FetchMassPlantingEventDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MassPlantingViewVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

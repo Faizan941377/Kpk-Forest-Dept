@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.Enclosure.Adapter.EnclosureAdapter;
@@ -24,6 +27,8 @@ import retrofit2.Response;
 
 public class View_Enclosure_DataActivity extends AppCompatActivity {
 
+    EditText searchET;
+    EnclosureAdapter enclosureAdapter;
     RecyclerView enclosureRV;
     SwipeRefreshLayout swipeRefreshLayout;
     List<FetchEnclosureDataModel> fetchEnclosureDataModelList;
@@ -34,6 +39,7 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view__enclosure__data);
 
+        searchET = findViewById(R.id.et_ViewEnclosure_search);
         enclosureRV = findViewById(R.id.rv_view_enclosure);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         progressDialog = new ProgressDialog(this);
@@ -46,7 +52,27 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                enclosureAdapter.getFilter().filter(s);
+            }
+        });
+
     }
+
+
 
     private void setAdapter() {
         enclosureRV.setHasFixedSize(true);
@@ -65,6 +91,8 @@ public class View_Enclosure_DataActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     fetchEnclosureDataModelList = response.body().getFetchEnclosureDataModelList();
                     enclosureRV.setAdapter(new EnclosureAdapter(fetchEnclosureDataModelList, getApplicationContext()));
+                    enclosureAdapter = new EnclosureAdapter(fetchEnclosureDataModelList,getApplicationContext());
+                    enclosureRV.setAdapter(enclosureAdapter);
 
                 }
             }

@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,16 +20,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchFarmForestryDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapter.FormForestryVH> {
+public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapter.FormForestryVH> implements Filterable {
 
-    List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList;
-    Context mContext;
+    private List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList;
+    private Context mContext;
+    private List<FetchFarmForestryDataModel> detailFetchFarmForestryDataModelList;
 
     public FarmForestryAdapter(List<FetchFarmForestryDataModel> fetchFarmForestryDataModelList, Context mContext) {
         this.fetchFarmForestryDataModelList = fetchFarmForestryDataModelList;
         this.mContext = mContext;
+        detailFetchFarmForestryDataModelList = new ArrayList<>();
+        detailFetchFarmForestryDataModelList.addAll(fetchFarmForestryDataModelList);
     }
 
     @NonNull
@@ -53,6 +60,39 @@ public class FarmForestryAdapter extends RecyclerView.Adapter<FarmForestryAdapte
     public int getItemCount() {
         return fetchFarmForestryDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchFarmForestryDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailFetchFarmForestryDataModelList);
+            }else
+            {
+                String  filter = constraint.toString().toLowerCase().trim();
+                for (FetchFarmForestryDataModel dataItem:detailFetchFarmForestryDataModelList){
+                    if (dataItem.getName_of_forest_division().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchFarmForestryDataModelList.clear();
+            fetchFarmForestryDataModelList.addAll((Collection<? extends FetchFarmForestryDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class FormForestryVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

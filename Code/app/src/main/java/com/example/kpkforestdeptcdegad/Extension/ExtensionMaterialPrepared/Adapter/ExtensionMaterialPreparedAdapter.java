@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,16 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchExtensionMaterialPreparedDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ExtensionMaterialPreparedAdapter extends RecyclerView.Adapter<ExtensionMaterialPreparedAdapter.ExtensionMaterialPreparedVH> {
+public class ExtensionMaterialPreparedAdapter extends RecyclerView.Adapter<ExtensionMaterialPreparedAdapter.ExtensionMaterialPreparedVH> implements Filterable {
 
-    Context mContext;
-    List<FetchExtensionMaterialPreparedDataModel> fetchExtensionMaterialPreparedDataModelList;
+    private Context mContext;
+    private List<FetchExtensionMaterialPreparedDataModel> fetchExtensionMaterialPreparedDataModelList;
+    private List<FetchExtensionMaterialPreparedDataModel> detailExtensionMaterialPreparedDataModelList;
 
     public ExtensionMaterialPreparedAdapter(Context mContext, List<FetchExtensionMaterialPreparedDataModel> fetchExtensionMaterialPreparedDataModelList) {
         this.mContext = mContext;
         this.fetchExtensionMaterialPreparedDataModelList = fetchExtensionMaterialPreparedDataModelList;
+        detailExtensionMaterialPreparedDataModelList = new ArrayList<>();
+        detailExtensionMaterialPreparedDataModelList.addAll(fetchExtensionMaterialPreparedDataModelList);
     }
 
     @NonNull
@@ -55,6 +62,38 @@ public class ExtensionMaterialPreparedAdapter extends RecyclerView.Adapter<Exten
     public int getItemCount() {
         return fetchExtensionMaterialPreparedDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchExtensionMaterialPreparedDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length()==0){
+                filterList.addAll(detailExtensionMaterialPreparedDataModelList);
+            }else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchExtensionMaterialPreparedDataModel dataItem:detailExtensionMaterialPreparedDataModelList){
+                    if (dataItem.getSouvenirs_Shields_No().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchExtensionMaterialPreparedDataModelList.clear();
+            fetchExtensionMaterialPreparedDataModelList.addAll((Collection<? extends FetchExtensionMaterialPreparedDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ExtensionMaterialPreparedVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

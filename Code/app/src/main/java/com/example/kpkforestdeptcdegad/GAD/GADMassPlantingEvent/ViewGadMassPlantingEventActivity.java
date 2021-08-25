@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.GAD.GADMassPlantingEvent.Adapter.GadMassPlantingEventAdapter;
@@ -27,6 +30,8 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
     List<FetchGadMassPlantingEventDataModel> fetchGadMassPlantingEventDataModelList;
+    EditText searchET;
+    GadMassPlantingEventAdapter gadMassPlantingEventAdapter;
 
 
     @Override
@@ -35,6 +40,7 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_gad_mass_planting_event);
 
         gadMassPlantingEventRV = findViewById(R.id.rv_view_GadMassPlantingEvent);
+        searchET = findViewById(R.id.et_ViewGADMassPlantingEvent_search);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
         progressDialog = new ProgressDialog(this);
@@ -46,6 +52,22 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                gadMassPlantingEventAdapter.getFilter().filter(s);
             }
         });
 
@@ -64,8 +86,14 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
         call.enqueue(new Callback<FetchGadMassPlantingEventResponse>() {
             @Override
             public void onResponse(Call<FetchGadMassPlantingEventResponse> call, Response<FetchGadMassPlantingEventResponse> response) {
-                fetchGadMassPlantingEventDataModelList = response.body().getFetchGadMassPlantingEventDataModelList();
-                gadMassPlantingEventRV.setAdapter(new GadMassPlantingEventAdapter(fetchGadMassPlantingEventDataModelList, getApplicationContext()));
+                if (response.isSuccessful()) {
+                    fetchGadMassPlantingEventDataModelList = response.body().getFetchGadMassPlantingEventDataModelList();
+                    gadMassPlantingEventRV.setAdapter(new GadMassPlantingEventAdapter(fetchGadMassPlantingEventDataModelList, getApplicationContext()));
+                    gadMassPlantingEventAdapter = new GadMassPlantingEventAdapter(fetchGadMassPlantingEventDataModelList, getApplicationContext());
+                    gadMassPlantingEventRV.setAdapter(gadMassPlantingEventAdapter);
+                } else {
+                    Toast.makeText(ViewGadMassPlantingEventActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

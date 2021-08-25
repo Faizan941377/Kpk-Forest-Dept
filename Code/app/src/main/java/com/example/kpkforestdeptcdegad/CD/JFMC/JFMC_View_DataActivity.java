@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.JFMC.Adapter.JFMC_Adapter;
@@ -30,6 +33,8 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
     RecyclerView jfmcViewRV;
     List<FetchJFMCDataModel> fetchJFMCDataModelList;
     SwipeRefreshLayout swipeRefreshLayout;
+    EditText searchET;
+    JFMC_Adapter jfmcAdapter;
 
     ProgressDialog progressDialog;
 
@@ -42,6 +47,7 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
 
         jfmcViewRV = findViewById(R.id.rv_view_jfmc);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
+        searchET = findViewById(R.id.et_viewJFMC_search);
         setAdapter();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -49,6 +55,23 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                jfmcAdapter.getFilter().filter(s);
             }
         });
     }
@@ -69,7 +92,11 @@ public class JFMC_View_DataActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     progressDialog.dismiss();
                     fetchJFMCDataModelList = response.body().getFetchJFMCDataModelList();
-                    jfmcViewRV.setAdapter(new JFMC_Adapter(getApplicationContext(), (ArrayList<FetchJFMCDataModel>) fetchJFMCDataModelList));
+                    jfmcViewRV.setAdapter(new JFMC_Adapter(getApplicationContext(),fetchJFMCDataModelList));
+                    jfmcAdapter = new JFMC_Adapter(getApplicationContext(), fetchJFMCDataModelList);
+                    jfmcViewRV.setAdapter(jfmcAdapter);
+                }else {
+                    Toast.makeText(JFMC_View_DataActivity.this, "Please check you internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

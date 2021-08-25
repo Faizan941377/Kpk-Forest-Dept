@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.VDC.Adapter.VDC_Adapter;
@@ -30,6 +33,8 @@ public class ViewWomenOrganizationActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
     List<FetchWomenOrganizationDataModel> fetchWomenOrganizationDataModelList;
+    EditText searchET;
+    WomenOrganizationAdapter womenOrganizationAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class ViewWomenOrganizationActivity extends AppCompatActivity {
 
         womenOrganizationRV = findViewById(R.id.rv_view_womenOrganization);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
+        searchET = findViewById(R.id.et_ViewWomenOrganization_search);
 
         progressDialog = new ProgressDialog(this);
         setAdapter();
@@ -49,6 +55,24 @@ public class ViewWomenOrganizationActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                womenOrganizationAdapter.getFilter().filter(s);
+            }
+        });
+
     }
 
     private void setAdapter() {
@@ -67,14 +91,19 @@ public class ViewWomenOrganizationActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     fetchWomenOrganizationDataModelList = response.body().getFetchWomenOrganizationDataModelList();
                     womenOrganizationRV.setAdapter(new WomenOrganizationAdapter(getApplicationContext(), fetchWomenOrganizationDataModelList));
+                    womenOrganizationAdapter = new WomenOrganizationAdapter(getApplicationContext(), fetchWomenOrganizationDataModelList);
+                    womenOrganizationRV.setAdapter(womenOrganizationAdapter);
+                } else {
+                    Toast.makeText(ViewWomenOrganizationActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<FetchWomenOrganizationResponse> call, Throwable t) {
+                progressDialog.dismiss();
                 try {
                     Toast.makeText(ViewWomenOrganizationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

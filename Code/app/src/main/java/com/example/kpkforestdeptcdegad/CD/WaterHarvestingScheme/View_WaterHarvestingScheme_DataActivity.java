@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.VDC.Adapter.VDC_Adapter;
@@ -31,6 +34,8 @@ public class View_WaterHarvestingScheme_DataActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     List<FetchWaterHarvestingSchemeDataModel> fetchWaterHarvestingSchemeDataModelList;
     ProgressDialog progressDialog;
+    EditText searchET;
+    WaterHarvestingScheme_Adapter waterHarvestingSchemeAdapter;
 
 
     @Override
@@ -40,6 +45,7 @@ public class View_WaterHarvestingScheme_DataActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         waterHarvestingSchemeRV = findViewById(R.id.rv_view_water_harvesting_scheme);
+        searchET = findViewById(R.id.et_ViewWaterHarvestingScheme_search);
         progressDialog = new ProgressDialog(this);
 
         setAdapter();
@@ -49,6 +55,23 @@ public class View_WaterHarvestingScheme_DataActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                waterHarvestingSchemeAdapter.getFilter().filter(s);
             }
         });
     }
@@ -70,6 +93,10 @@ public class View_WaterHarvestingScheme_DataActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     fetchWaterHarvestingSchemeDataModelList = response.body().getFetchWaterHarvestingSchemeDataModelList();
                     waterHarvestingSchemeRV.setAdapter(new WaterHarvestingScheme_Adapter(fetchWaterHarvestingSchemeDataModelList, getApplicationContext()));
+                    waterHarvestingSchemeAdapter = new WaterHarvestingScheme_Adapter(fetchWaterHarvestingSchemeDataModelList,getApplicationContext());
+                    waterHarvestingSchemeRV.setAdapter(waterHarvestingSchemeAdapter);
+                }else {
+                    Toast.makeText(View_WaterHarvestingScheme_DataActivity.this, "Please check you internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

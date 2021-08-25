@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,16 +20,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchWaterHarvestingSchemeDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class WaterHarvestingScheme_Adapter extends RecyclerView.Adapter<WaterHarvestingScheme_Adapter.WaterHarvestingSchemeVH> {
+public class WaterHarvestingScheme_Adapter extends RecyclerView.Adapter<WaterHarvestingScheme_Adapter.WaterHarvestingSchemeVH> implements Filterable {
 
-    List<FetchWaterHarvestingSchemeDataModel> fetchWaterHarvestingSchemeDataModelList;
-    Context mContext;
+    private List<FetchWaterHarvestingSchemeDataModel> fetchWaterHarvestingSchemeDataModelList;
+    private List<FetchWaterHarvestingSchemeDataModel> detailWaterHarvestingSchemeDataModelList;
+    private Context mContext;
 
     public WaterHarvestingScheme_Adapter(List<FetchWaterHarvestingSchemeDataModel> fetchWaterHarvestingSchemeDataModelList, Context mContext) {
         this.fetchWaterHarvestingSchemeDataModelList = fetchWaterHarvestingSchemeDataModelList;
         this.mContext = mContext;
+        detailWaterHarvestingSchemeDataModelList = new ArrayList<>();
+        detailWaterHarvestingSchemeDataModelList.addAll(fetchWaterHarvestingSchemeDataModelList);
     }
 
     @NonNull
@@ -55,6 +62,38 @@ public class WaterHarvestingScheme_Adapter extends RecyclerView.Adapter<WaterHar
         return fetchWaterHarvestingSchemeDataModelList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchWaterHarvestingSchemeDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(detailWaterHarvestingSchemeDataModelList);
+            } else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchWaterHarvestingSchemeDataModel dataItem : detailWaterHarvestingSchemeDataModelList) {
+                    if (dataItem.getName_of_division().toLowerCase().contains(filter)) {
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchWaterHarvestingSchemeDataModelList.clear();
+            fetchWaterHarvestingSchemeDataModelList.addAll((Collection<? extends FetchWaterHarvestingSchemeDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
     public class WaterHarvestingSchemeVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView showMoreTV;
@@ -80,7 +119,7 @@ public class WaterHarvestingScheme_Adapter extends RecyclerView.Adapter<WaterHar
             nameOfDivisionTV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_nameOfDivision);
             nameOfForestDivisionTV = itemView.findViewById(R.id.tv_rowVIewWaterHarvestingScheme_nameOfForestDivision);
             targetAsPC1TV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_targetAsPC1);
-            achieveSoFarNoTV =itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_achieveSoFarNo);
+            achieveSoFarNoTV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_achieveSoFarNo);
             vdcEstablishedTV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_vdcEstablished);
             progressTillDateTV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_progressTillDate);
             timeDateTV = itemView.findViewById(R.id.tv_rowViewWaterHarvestingScheme_timeDate);

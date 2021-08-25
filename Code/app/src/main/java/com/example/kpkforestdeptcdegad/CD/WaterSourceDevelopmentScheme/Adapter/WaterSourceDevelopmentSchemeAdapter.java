@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,16 +23,21 @@ import com.example.kpkforestdeptcdegad.R;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class WaterSourceDevelopmentSchemeAdapter extends RecyclerView.Adapter<WaterSourceDevelopmentSchemeAdapter.WaterSourceDevelopmentVH> {
+public class WaterSourceDevelopmentSchemeAdapter extends RecyclerView.Adapter<WaterSourceDevelopmentSchemeAdapter.WaterSourceDevelopmentVH> implements Filterable {
 
-    List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList;
-    Context mContext;
+    private List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList;
+    private List<FetchWaterSourceDevelopSchemeDataModel> detailWaterSourceDevelopSchemeDataModelList;
+    private Context mContext;
 
     public WaterSourceDevelopmentSchemeAdapter(List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList, Context mContext) {
         this.fetchWaterSourceDevelopSchemeDataModelList = fetchWaterSourceDevelopSchemeDataModelList;
         this.mContext = mContext;
+        detailWaterSourceDevelopSchemeDataModelList = new ArrayList<>();
+        detailWaterSourceDevelopSchemeDataModelList.addAll(fetchWaterSourceDevelopSchemeDataModelList);
     }
 
     @NonNull
@@ -57,6 +64,38 @@ public class WaterSourceDevelopmentSchemeAdapter extends RecyclerView.Adapter<Wa
     public int getItemCount() {
         return fetchWaterSourceDevelopSchemeDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchWaterSourceDevelopSchemeDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(detailWaterSourceDevelopSchemeDataModelList);
+            } else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchWaterSourceDevelopSchemeDataModel dataItem : detailWaterSourceDevelopSchemeDataModelList) {
+                    if (dataItem.getName_of_division().toLowerCase().contains(filter)) {
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchWaterSourceDevelopSchemeDataModelList.clear();
+            fetchWaterSourceDevelopSchemeDataModelList.addAll((Collection<? extends FetchWaterSourceDevelopSchemeDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class WaterSourceDevelopmentVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -111,7 +150,7 @@ public class WaterSourceDevelopmentSchemeAdapter extends RecyclerView.Adapter<Wa
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.tv_rowViewVDC_showMore:
                     ShowMore(v);
                     break;

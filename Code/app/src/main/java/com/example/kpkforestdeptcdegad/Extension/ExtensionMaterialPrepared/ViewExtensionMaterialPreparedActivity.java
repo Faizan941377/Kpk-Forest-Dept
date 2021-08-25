@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.Extension.CelebrationOfEnvironmentalPlanting.Adapter.CelebrationOfEnvironmentalPlantingEventAdapter;
@@ -28,6 +31,8 @@ public class ViewExtensionMaterialPreparedActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     List<FetchExtensionMaterialPreparedDataModel> fetchExtensionMaterialPreparedDataModelList;
     ProgressDialog progressDialog;
+    EditText searchET;
+    ExtensionMaterialPreparedAdapter extensionMaterialPreparedAdapter;
 
 
     @Override
@@ -38,6 +43,7 @@ public class ViewExtensionMaterialPreparedActivity extends AppCompatActivity {
         extensionMaterialPreparedRV = findViewById(R.id.rv_extensionMaterialPrepared);
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
+        searchET = findViewById(R.id.et_ViewExtensionMaterialPrepared_search);
 
         progressDialog = new ProgressDialog(this);
 
@@ -48,6 +54,23 @@ public class ViewExtensionMaterialPreparedActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                extensionMaterialPreparedAdapter.getFilter().filter(s);
             }
         });
     }
@@ -70,6 +93,10 @@ public class ViewExtensionMaterialPreparedActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     fetchExtensionMaterialPreparedDataModelList = response.body().getFetchExtensionMaterialPreparedDataModelList();
                     extensionMaterialPreparedRV.setAdapter(new ExtensionMaterialPreparedAdapter(getApplicationContext(), fetchExtensionMaterialPreparedDataModelList));
+                    extensionMaterialPreparedAdapter = new ExtensionMaterialPreparedAdapter(getApplicationContext(), fetchExtensionMaterialPreparedDataModelList);
+                    extensionMaterialPreparedRV.setAdapter(extensionMaterialPreparedAdapter);
+                }else {
+                    Toast.makeText(ViewExtensionMaterialPreparedActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

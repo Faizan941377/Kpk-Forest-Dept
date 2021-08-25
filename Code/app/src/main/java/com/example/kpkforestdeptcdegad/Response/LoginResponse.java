@@ -1,14 +1,24 @@
 package com.example.kpkforestdeptcdegad.Response;
 
 
+import com.example.kpkforestdeptcdegad.Model.FetchYouthWomenNurseryDataModel;
 import com.example.kpkforestdeptcdegad.Model.LoginModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class LoginResponse {
 
 
     @SerializedName("user")
+
+
+    private List<LoginResponse> loginResponses = null;
+
+    public List<LoginResponse> getLoginResponses() {
+        return loginResponses;
+    }
     @Expose
     private LoginModel loginModel;
     @SerializedName("error")

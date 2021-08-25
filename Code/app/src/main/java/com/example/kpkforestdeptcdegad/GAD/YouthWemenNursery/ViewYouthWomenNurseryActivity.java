@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.GAD.YouthWemenNursery.Adapter.YouthWomenNurseryAdapter;
@@ -27,6 +30,8 @@ public class ViewYouthWomenNurseryActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
     List<FetchYouthWomenNurseryDataModel> fetchYouthWomenNurseryDataModelList;
+    EditText searchET;
+    YouthWomenNurseryAdapter youthWomenNurseryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class ViewYouthWomenNurseryActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         youthWomenNurseryRV = findViewById(R.id.rv_view_YouthWWomenNursery);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
+        searchET = findViewById(R.id.et_ViewYouthWomenNurser_search);
 
         setAdapter();
 
@@ -45,6 +51,22 @@ public class ViewYouthWomenNurseryActivity extends AppCompatActivity {
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                youthWomenNurseryAdapter.getFilter().filter(s);
             }
         });
     }
@@ -65,8 +87,10 @@ public class ViewYouthWomenNurseryActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     fetchYouthWomenNurseryDataModelList = response.body().getFetchYouthWomenNurseryDataModelList();
                     youthWomenNurseryRV.setAdapter(new YouthWomenNurseryAdapter(getApplicationContext(), fetchYouthWomenNurseryDataModelList));
+                    youthWomenNurseryAdapter = new YouthWomenNurseryAdapter(getApplicationContext(), fetchYouthWomenNurseryDataModelList);
+                    youthWomenNurseryRV.setAdapter(youthWomenNurseryAdapter);
                 } else {
-                    Toast.makeText(ViewYouthWomenNurseryActivity.this, "Data not found!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewYouthWomenNurseryActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

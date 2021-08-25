@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -22,15 +24,20 @@ import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
+public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> implements Filterable {
 
-     ArrayList<FetchVDCDataModel> fetchVDCDataModelList;
-     Context mContext;
+     private List<FetchVDCDataModel> fetchVDCDataModelList;
+     private List<FetchVDCDataModel> detailVDCDataModelList;
+     private Context mContext;
 
-    public VDC_Adapter(ArrayList<FetchVDCDataModel> fetchVDCDataModelList, Context mContext) {
+    public VDC_Adapter(List<FetchVDCDataModel> fetchVDCDataModelList, Context mContext) {
         this.fetchVDCDataModelList = fetchVDCDataModelList;
         this.mContext = mContext;
+        detailVDCDataModelList = new ArrayList<>();
+        detailVDCDataModelList.addAll(fetchVDCDataModelList);
     }
 
     @NonNull
@@ -43,6 +50,7 @@ public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
 
     @Override
     public void onBindViewHolder(@NonNull VDC_Adapter.VDCVH holder, int position) {
+
         holder.employeeNoTV.setText(fetchVDCDataModelList.get(position).getEmployee_no());
         holder.employeeNameTV.setText(fetchVDCDataModelList.get(position).getEmployee_name());
         holder.forestDivisionTV.setText(fetchVDCDataModelList.get(position).getName_of_forest_divsion());
@@ -70,6 +78,38 @@ public class VDC_Adapter extends RecyclerView.Adapter<VDC_Adapter.VDCVH> {
         }
         return 0;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchVDCDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailVDCDataModelList);
+            }else {
+                String  filter = constraint.toString().toLowerCase().trim();
+                for (FetchVDCDataModel dataItem:detailVDCDataModelList){
+                    if (dataItem.getName_of_forest_divsion().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchVDCDataModelList.clear();
+            fetchVDCDataModelList.addAll((Collection<? extends FetchVDCDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class VDCVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

@@ -7,6 +7,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.Extension.CelebrationOfEnvironmentalPlanting.Adapter.CelebrationOfEnvironmentalPlantingEventAdapter;
 import com.example.kpkforestdeptcdegad.Extension.MassPlantingEvent.Adapter.MassPlantingEventAdapter;
@@ -28,6 +32,8 @@ public class ViewCelebrationOfEnvironmentalPlantingActivity extends AppCompatAct
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
     List<FetchCelebrationOfEnvironmentalPlantingEventDataModel> fetchCelebrationOfEnvironmentalPlantingEventDataModelList;
+    EditText searchET;
+    CelebrationOfEnvironmentalPlantingEventAdapter celebrationOfEnvironmentalPlantingEventAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class ViewCelebrationOfEnvironmentalPlantingActivity extends AppCompatAct
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         celebrationOfEnvironmentalPlantingEventRV = findViewById(R.id.rv_celebrationOfEnvironmentalPlantingEvent);
+        searchET = findViewById(R.id.et_ViewCelebrationOfEnvironmentalPlanting_Search);
 
         progressDialog = new ProgressDialog(this);
 
@@ -46,6 +53,23 @@ public class ViewCelebrationOfEnvironmentalPlantingActivity extends AppCompatAct
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                celebrationOfEnvironmentalPlantingEventAdapter.getFilter().filter(s);
             }
         });
     }
@@ -68,6 +92,10 @@ public class ViewCelebrationOfEnvironmentalPlantingActivity extends AppCompatAct
                     progressDialog.dismiss();
                     fetchCelebrationOfEnvironmentalPlantingEventDataModelList = response.body().getFetchCelebrationOfEnvironmentalPlantingEventDataModelList();
                     celebrationOfEnvironmentalPlantingEventRV.setAdapter(new CelebrationOfEnvironmentalPlantingEventAdapter(getApplicationContext(), fetchCelebrationOfEnvironmentalPlantingEventDataModelList));
+                    celebrationOfEnvironmentalPlantingEventAdapter = new CelebrationOfEnvironmentalPlantingEventAdapter(getApplicationContext(), fetchCelebrationOfEnvironmentalPlantingEventDataModelList);
+                    celebrationOfEnvironmentalPlantingEventRV.setAdapter(celebrationOfEnvironmentalPlantingEventAdapter);
+                }else {
+                    Toast.makeText(ViewCelebrationOfEnvironmentalPlantingActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

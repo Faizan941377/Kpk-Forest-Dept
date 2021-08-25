@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,22 +21,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchJFMCDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
+public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> implements Filterable {
 
-    Context mContext;
-    List<FetchJFMCDataModel> fetchJFMCDataModelList;
+    private Context mContext;
+    private List<FetchJFMCDataModel> fetchJFMCDataModelList;
+    private List<FetchJFMCDataModel> detailJFMCDataModelList;
 
     public JFMC_Adapter(Context mContext, List<FetchJFMCDataModel> fetchJFMCDataModelList) {
         this.mContext = mContext;
         this.fetchJFMCDataModelList = fetchJFMCDataModelList;
+        detailJFMCDataModelList = new ArrayList<>();
+        detailJFMCDataModelList.addAll(fetchJFMCDataModelList);
     }
 
     @NonNull
     @Override
     public JFMC_Adapter.JFMCVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.row_view_jfmc,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.row_view_jfmc, parent, false);
         return new JFMCVH(view);
     }
 
@@ -56,11 +63,43 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
     public int getItemCount() {
         try {
             return fetchJFMCDataModelList.size();
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(mContext, "Data Not Found", Toast.LENGTH_SHORT).show();
         }
         return 0;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchJFMCDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailJFMCDataModelList);
+            }else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchJFMCDataModel dataItem:detailJFMCDataModelList){
+                    if (dataItem.getName_of_forest_division().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchJFMCDataModelList.clear();
+            fetchJFMCDataModelList.addAll((Collection<? extends FetchJFMCDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class JFMCVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -99,17 +138,17 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
             showMoreTV.setOnClickListener(this);
         }
 
-        public void ShowMore(View view){
-            if (expendableLinearLayout2.getVisibility() == view.GONE){
+        public void ShowMore(View view) {
+            if (expendableLinearLayout2.getVisibility() == view.GONE) {
                 showMoreTV.setText("Show Less");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    TransitionManager.beginDelayedTransition(expendingCardView,new AutoTransition());
+                    TransitionManager.beginDelayedTransition(expendingCardView, new AutoTransition());
                     expendableLinearLayout2.setVisibility(View.VISIBLE);
                 }
-            }else {
+            } else {
                 showMoreTV.setText("Read More");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    TransitionManager.beginDelayedTransition(expendingCardView,new AutoTransition());
+                    TransitionManager.beginDelayedTransition(expendingCardView, new AutoTransition());
                 }
                 expendableLinearLayout2.setVisibility(View.GONE);
             }
@@ -117,7 +156,7 @@ public class JFMC_Adapter extends RecyclerView.Adapter<JFMC_Adapter.JFMCVH> {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.tv_rowViewVDC_showMore:
                     ShowMore(v);
                     break;

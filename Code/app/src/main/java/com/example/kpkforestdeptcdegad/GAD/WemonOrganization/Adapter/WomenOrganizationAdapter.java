@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,26 +18,32 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.kpkforestdeptcdegad.Model.FetchOtherActivityDataModel;
 import com.example.kpkforestdeptcdegad.Model.FetchWomenOrganizationDataModel;
 import com.example.kpkforestdeptcdegad.Network.RetrofitClient;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class WomenOrganizationAdapter extends RecyclerView.Adapter<WomenOrganizationAdapter.WomenOrganizationVH> {
+public class WomenOrganizationAdapter extends RecyclerView.Adapter<WomenOrganizationAdapter.WomenOrganizationVH> implements Filterable {
 
     Context mContext;
-    List<FetchWomenOrganizationDataModel> fetchWomenOrganizationDataModelList;
+    private List<FetchWomenOrganizationDataModel> fetchWomenOrganizationDataModelList;
+    private List<FetchWomenOrganizationDataModel> detailWomenOrganizationDataModelList;
 
     public WomenOrganizationAdapter(Context mContext, List<FetchWomenOrganizationDataModel> fetchWomenOrganizationDataModelList) {
         this.mContext = mContext;
         this.fetchWomenOrganizationDataModelList = fetchWomenOrganizationDataModelList;
+        detailWomenOrganizationDataModelList = new ArrayList<>();
+        detailWomenOrganizationDataModelList.addAll(fetchWomenOrganizationDataModelList);
     }
 
     @NonNull
     @Override
     public WomenOrganizationAdapter.WomenOrganizationVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.row_view_women_organization,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.row_view_women_organization, parent, false);
         return new WomenOrganizationVH(view);
     }
 
@@ -60,6 +68,38 @@ public class WomenOrganizationAdapter extends RecyclerView.Adapter<WomenOrganiza
         return fetchWomenOrganizationDataModelList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchWomenOrganizationDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(detailWomenOrganizationDataModelList);
+            } else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchWomenOrganizationDataModel dataItem : detailWomenOrganizationDataModelList) {
+                    if (dataItem.getName_of_village_vdc().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchWomenOrganizationDataModelList.clear();
+            fetchWomenOrganizationDataModelList.addAll((Collection<? extends FetchWomenOrganizationDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
     public class WomenOrganizationVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView employeeNoTV;
         TextView employeeNameTV;
@@ -75,7 +115,6 @@ public class WomenOrganizationAdapter extends RecyclerView.Adapter<WomenOrganiza
         TextView showMoreTV;
         CardView expendingCardView;
         LinearLayout expendableLinearLayout2;
-
 
 
         public WomenOrganizationVH(@NonNull View itemView) {

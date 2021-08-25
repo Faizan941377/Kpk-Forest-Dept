@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,16 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchGadMassPlantingEventDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class GadMassPlantingEventAdapter extends RecyclerView.Adapter<GadMassPlantingEventAdapter.GadMassPlantingEventVH> {
+public class GadMassPlantingEventAdapter extends RecyclerView.Adapter<GadMassPlantingEventAdapter.GadMassPlantingEventVH> implements Filterable {
 
-    List<FetchGadMassPlantingEventDataModel> fetchGadMassPlantingEventDataModelList;
+    private List<FetchGadMassPlantingEventDataModel> fetchGadMassPlantingEventDataModelList;
+    private List<FetchGadMassPlantingEventDataModel> detailGadMassPlantingEventDataModelList;
     Context mContext;
 
     public GadMassPlantingEventAdapter(List<FetchGadMassPlantingEventDataModel> fetchGadMassPlantingEventDataModelList, Context mContext) {
         this.fetchGadMassPlantingEventDataModelList = fetchGadMassPlantingEventDataModelList;
         this.mContext = mContext;
+        detailGadMassPlantingEventDataModelList = new ArrayList<>();
+        detailGadMassPlantingEventDataModelList.addAll(fetchGadMassPlantingEventDataModelList);
     }
 
     @NonNull
@@ -57,6 +64,38 @@ public class GadMassPlantingEventAdapter extends RecyclerView.Adapter<GadMassPla
         return fetchGadMassPlantingEventDataModelList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchGadMassPlantingEventDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(detailGadMassPlantingEventDataModelList);
+            } else {
+                String filter = constraint.toString().toLowerCase().trim();
+                for (FetchGadMassPlantingEventDataModel dataItem : detailGadMassPlantingEventDataModelList) {
+                    if (dataItem.getName_of_division().toLowerCase().contains(filter)) {
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchGadMassPlantingEventDataModelList.clear();
+            fetchGadMassPlantingEventDataModelList.addAll((Collection<? extends FetchGadMassPlantingEventDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
     public class GadMassPlantingEventVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView employeeNoTV;
@@ -74,7 +113,6 @@ public class GadMassPlantingEventAdapter extends RecyclerView.Adapter<GadMassPla
         TextView showMoreTV;
         CardView expendingCardView;
         LinearLayout expendableLinearLayout2;
-
 
 
         public GadMassPlantingEventVH(@NonNull View itemView) {

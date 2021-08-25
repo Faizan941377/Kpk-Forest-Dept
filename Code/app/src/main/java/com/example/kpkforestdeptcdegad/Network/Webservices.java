@@ -8,14 +8,17 @@ import com.example.kpkforestdeptcdegad.Response.CD_JFMCResponse;
 import com.example.kpkforestdeptcdegad.Response.CelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.EnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.ExtensionMaterialPreparedResponse;
+import com.example.kpkforestdeptcdegad.Response.FarmAgroForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchCelebrationOfEnvironmentalPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchEnclosureResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchExtensionMaterialPreparedResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchFarmAgroForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchFarmForestryResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchGadMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchJFMCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchMassPlantingEventResponse;
+import com.example.kpkforestdeptcdegad.Response.FetchOtherActivityResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchVDCDataResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterHarvestingSchemeResponse;
 import com.example.kpkforestdeptcdegad.Response.FetchWaterSourceDevelopSchemeResponse;
@@ -24,6 +27,7 @@ import com.example.kpkforestdeptcdegad.Response.FetchYouthWomenNurseryResponse;
 import com.example.kpkforestdeptcdegad.Response.GadMassPlantingEventResponse;
 import com.example.kpkforestdeptcdegad.Response.LoginResponse;
 import com.example.kpkforestdeptcdegad.Response.MassPlantingEventResponse;
+import com.example.kpkforestdeptcdegad.Response.OtherActivityResponse;
 import com.example.kpkforestdeptcdegad.Response.RegistrationResponse;
 import com.example.kpkforestdeptcdegad.Response.VDCResponse;
 import com.example.kpkforestdeptcdegad.Response.WaterHarvestingSchemeResponse;
@@ -97,6 +101,9 @@ public interface Webservices {
             @Field("image") String image
     );
 
+    @GET("fetchAllUsers.php")
+    Call<LoginResponse> loginResponse();
+
     @FormUrlEncoded
     @POST("cd_enclosure.php")
     Call<EnclosureResponse> enclosure(
@@ -131,7 +138,7 @@ public interface Webservices {
     );
 
     @GET("fetchCDFARMFORESTY.php")
-    Call<FetchFarmForestryResponse> fetchFetchFarmForestryResponse();
+    Call<FetchFarmForestryResponse> fetchFarmForestryResponse();
 
 
     @FormUrlEncoded
@@ -276,4 +283,38 @@ public interface Webservices {
 
     @GET("fetchGadMassPlantingEvent.php")
     Call<FetchGadMassPlantingEventResponse> fetchGadMassPlantingEventResponse();
+
+
+    @FormUrlEncoded
+    @POST("GADFarmAgroForestry.php")
+    Call<FarmAgroForestryResponse> farmAgroForestryResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("gad_add") String gad_add,
+            @Field("other_activities") String other_activities,
+            @Field("name_of_women_organization") String name_of_women_organization,
+            @Field("name_of_major_activities") String name_of_major_activities,
+            @Field("name_of_village") String name_of_village
+    );
+
+
+    @GET("fetchGADFarmAgroForestry.php")
+    Call<FetchFarmAgroForestryResponse> fetchFarmAgroForestryResponse();
+
+
+    @FormUrlEncoded
+    @POST("GADOtherActivity.php")
+    Call<OtherActivityResponse> otherActivityResponse(
+            @Field("employee_no") String employee_no,
+            @Field("employee_name") String employee_name,
+            @Field("activity_title") String activity_title,
+            @Field("name_of_forest_division") String name_of_forest_division,
+            @Field("name_of_wo") String name_of_wo,
+            @Field("name_of_village") String name_of_village,
+            @Field("description") String description
+    );
+
+
+    @GET("fetchGADOtherActivity.php")
+    Call<FetchOtherActivityResponse> fetchOtherActivityResponse();
 }

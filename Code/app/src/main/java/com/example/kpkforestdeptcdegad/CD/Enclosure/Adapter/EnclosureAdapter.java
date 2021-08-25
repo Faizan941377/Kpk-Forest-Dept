@@ -7,6 +7,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,16 +21,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kpkforestdeptcdegad.Model.FetchEnclosureDataModel;
 import com.example.kpkforestdeptcdegad.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.EnclosureVH> {
+public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.EnclosureVH> implements Filterable {
 
-    List<FetchEnclosureDataModel> fetchEnclosureDataModelList;
-    Context mContext;
+    private List<FetchEnclosureDataModel> fetchEnclosureDataModelList;
+    private Context mContext;
+    private List<FetchEnclosureDataModel> detailEnclosureDataModelList;
 
     public EnclosureAdapter(List<FetchEnclosureDataModel> fetchEnclosureDataModelList, Context mContext) {
         this.fetchEnclosureDataModelList = fetchEnclosureDataModelList;
         this.mContext = mContext;
+        detailEnclosureDataModelList = new ArrayList<>();
+        detailEnclosureDataModelList.addAll(fetchEnclosureDataModelList);
     }
 
     @NonNull
@@ -58,6 +65,39 @@ public class EnclosureAdapter extends RecyclerView.Adapter<EnclosureAdapter.Encl
     public int getItemCount() {
         return fetchEnclosureDataModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FetchEnclosureDataModel> filterList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0){
+                filterList.addAll(detailEnclosureDataModelList);
+            }else {
+                String  filter = constraint.toString().trim();
+                for (FetchEnclosureDataModel dataItem:detailEnclosureDataModelList){
+                    if (dataItem.getForest_division().toLowerCase().contains(filter)){
+                        filterList.add(dataItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fetchEnclosureDataModelList.clear();
+            fetchEnclosureDataModelList.addAll((Collection<? extends FetchEnclosureDataModel>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     public class EnclosureVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

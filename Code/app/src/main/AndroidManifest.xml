@@ -132,7 +132,7 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" />
         <activity
             android:name=".user.LoginActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />

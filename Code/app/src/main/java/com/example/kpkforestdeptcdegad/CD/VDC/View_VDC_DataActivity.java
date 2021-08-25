@@ -7,6 +7,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class View_VDC_DataActivity extends AppCompatActivity {
     EditText searchET;
     List<FetchVDCDataModel> fetchVDCDataModelList;
     ProgressDialog progressDialog;
+    VDC_Adapter vdc_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,23 @@ public class View_VDC_DataActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                vdc_adapter.getFilter().filter(s);
+            }
+        });
     }
 
 
@@ -68,7 +88,11 @@ public class View_VDC_DataActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     progressDialog.dismiss();
                     fetchVDCDataModelList = response.body().getVdcData();
-                    vdcViewRV.setAdapter(new VDC_Adapter((ArrayList<FetchVDCDataModel>) fetchVDCDataModelList, getApplicationContext()));
+                    vdcViewRV.setAdapter(new VDC_Adapter(fetchVDCDataModelList, getApplicationContext()));
+                    vdc_adapter = new VDC_Adapter(fetchVDCDataModelList, getApplicationContext());
+                    vdcViewRV.setAdapter(vdc_adapter);
+                } else {
+                    Toast.makeText(View_VDC_DataActivity.this, "Please check you internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 

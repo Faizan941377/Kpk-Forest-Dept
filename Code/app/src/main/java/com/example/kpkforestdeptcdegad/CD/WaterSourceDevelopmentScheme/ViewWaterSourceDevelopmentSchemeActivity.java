@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.CD.WaterHarvestingScheme.Adapter.WaterHarvestingScheme_Adapter;
@@ -27,7 +30,10 @@ public class ViewWaterSourceDevelopmentSchemeActivity extends AppCompatActivity 
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView waterSourceDevelopSchemeRV;
     ProgressDialog progressDialog;
+    WaterSourceDevelopmentSchemeAdapter waterSourceDevelopmentSchemeAdapter;
+    EditText searchET;
     List<FetchWaterSourceDevelopSchemeDataModel> fetchWaterSourceDevelopSchemeDataModelList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +41,7 @@ public class ViewWaterSourceDevelopmentSchemeActivity extends AppCompatActivity 
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         waterSourceDevelopSchemeRV = findViewById(R.id.rv_view_water_source_scheme);
+        searchET = findViewById(R.id.et_ViewWaterSouceDevelopmentScheme_search);
 
         progressDialog = new ProgressDialog(this);
 
@@ -45,6 +52,23 @@ public class ViewWaterSourceDevelopmentSchemeActivity extends AppCompatActivity 
             public void onRefresh() {
                 setAdapter();
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        searchET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                waterSourceDevelopmentSchemeAdapter.getFilter().filter(s);
             }
         });
     }
@@ -66,6 +90,10 @@ public class ViewWaterSourceDevelopmentSchemeActivity extends AppCompatActivity 
                     progressDialog.dismiss();
                     fetchWaterSourceDevelopSchemeDataModelList = response.body().getFetchWaterSourceDevelopSchemeDataModelList();
                     waterSourceDevelopSchemeRV.setAdapter(new WaterSourceDevelopmentSchemeAdapter(fetchWaterSourceDevelopSchemeDataModelList, getApplicationContext()));
+                    waterSourceDevelopmentSchemeAdapter = new WaterSourceDevelopmentSchemeAdapter(fetchWaterSourceDevelopSchemeDataModelList, getApplicationContext());
+                    waterSourceDevelopSchemeRV.setAdapter(waterSourceDevelopmentSchemeAdapter);
+                } else {
+                    Toast.makeText(ViewWaterSourceDevelopmentSchemeActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -73,7 +101,7 @@ public class ViewWaterSourceDevelopmentSchemeActivity extends AppCompatActivity 
             public void onFailure(Call<FetchWaterSourceDevelopSchemeResponse> call, Throwable t) {
                 try {
                     Toast.makeText(ViewWaterSourceDevelopmentSchemeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

@@ -175,7 +175,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(true);
 
-        Call<RegistrationResponse> call = RetrofitClient.getInstance().getApi().register(firstName, gender, cnic, emp, mobile, division, email, password,image);
+        Call<RegistrationResponse> call = RetrofitClient.getInstance().getApi().register(firstName, gender, cnic, emp, mobile, division, email, password, image);
         call.enqueue(new Callback<RegistrationResponse>() {
             @Override
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
@@ -184,18 +184,27 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 if (response.isSuccessful()) {
                     if (registrationResponse.getError().equals("200")) {
 
-                        Intent intent = new Intent(RegistrationActivity.this,LoginActivity.class);
+                        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(RegistrationActivity.this, registrationResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
+                    } else if (registrationResponse.getError().equals("400")) {
+                        Toast.makeText(RegistrationActivity.this, registrationResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else if (registrationResponse.getError().equals("403")) {
+                        Toast.makeText(RegistrationActivity.this, registrationResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<RegistrationResponse> call, Throwable t) {
-                Toast.makeText(RegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                try {
+
+                    Toast.makeText(RegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
