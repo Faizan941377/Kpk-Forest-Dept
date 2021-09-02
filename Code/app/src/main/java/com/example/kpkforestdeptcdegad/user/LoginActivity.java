@@ -134,24 +134,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     LoginResponse loginResponse = response.body();
-                    if (!loginResponse.equals("200")) {
+                    if (response.isSuccessful()) {
 
-                        SharePrefManager.getInstance(LoginActivity.this)
-                                .saveUser(loginResponse.getLoginModel());
-                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                        if (loginResponse.getError().equals("200")) {
 
-                        progressDialog.dismiss();
-
-                    } else {
-                        Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(LoginActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                            SharePrefManager.getInstance(LoginActivity.this)
+                                    .saveUser(loginResponse.getLoginModel());
+                            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else if (loginResponse.getError().equals("400")) {
+                            Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        } else if (loginResponse.getError().equals("500")) {
+                            Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    progressDialog.dismiss();
                     try {
                         Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {

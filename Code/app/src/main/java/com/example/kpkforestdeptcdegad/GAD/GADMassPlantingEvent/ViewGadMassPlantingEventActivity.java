@@ -9,7 +9,9 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kpkforestdeptcdegad.GAD.GADMassPlantingEvent.Adapter.GadMassPlantingEventAdapter;
@@ -24,13 +26,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
+public class ViewGadMassPlantingEventActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView gadMassPlantingEventRV;
     SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
     List<FetchGadMassPlantingEventDataModel> fetchGadMassPlantingEventDataModelList;
     EditText searchET;
+    ImageView icoBack;
     GadMassPlantingEventAdapter gadMassPlantingEventAdapter;
 
 
@@ -43,7 +46,10 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
         searchET = findViewById(R.id.et_ViewGADMassPlantingEvent_search);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
+        icoBack = findViewById(R.id.iv_ViewGADMassPlantingEvent_back);
+
         progressDialog = new ProgressDialog(this);
+        icoBack.setOnClickListener(this);
 
         setAdapter();
 
@@ -78,6 +84,7 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
         gadMassPlantingEventRV.setHasFixedSize(true);
         gadMassPlantingEventRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.show();
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
@@ -87,6 +94,7 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<FetchGadMassPlantingEventResponse> call, Response<FetchGadMassPlantingEventResponse> response) {
                 if (response.isSuccessful()) {
+                    progressDialog.dismiss();
                     fetchGadMassPlantingEventDataModelList = response.body().getFetchGadMassPlantingEventDataModelList();
                     gadMassPlantingEventRV.setAdapter(new GadMassPlantingEventAdapter(fetchGadMassPlantingEventDataModelList, getApplicationContext()));
                     gadMassPlantingEventAdapter = new GadMassPlantingEventAdapter(fetchGadMassPlantingEventDataModelList, getApplicationContext());
@@ -98,6 +106,7 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<FetchGadMassPlantingEventResponse> call, Throwable t) {
+                progressDialog.dismiss();
                 try {
                     Toast.makeText(ViewGadMassPlantingEventActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -105,5 +114,14 @@ public class ViewGadMassPlantingEventActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_ViewGADMassPlantingEvent_back:
+                finish();
+                break;
+        }
     }
 }

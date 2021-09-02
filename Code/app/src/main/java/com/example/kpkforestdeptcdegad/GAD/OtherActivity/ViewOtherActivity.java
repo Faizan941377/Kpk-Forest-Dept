@@ -79,6 +79,7 @@ public class ViewOtherActivity extends AppCompatActivity {
         otherActivityRV.setHasFixedSize(true);
         otherActivityRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        progressDialog.show();
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
